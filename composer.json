@@ -1,0 +1,20 @@
+{
+    "name": "krosben/uca-satisfaction-survey",
+    "description": "student opinion survey",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "KROSF",
+            "email": "rodrigosanabria22@gmail.com"
+        },
+        {
+            "name": "RubenZx",
+            "email": "ruben.mondom@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16"
+    }
+}
