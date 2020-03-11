@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "RubenZx",
+      "name": "Rubén",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/36533775?v=4",
+      "profile": "https://github.com/RubenZx",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "uca-satisfaction-survey",
+  "projectOwner": "krosben",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
