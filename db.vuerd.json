@@ -17,7 +17,7 @@
     },
     "database": "MySQL",
     "databaseName": "poll",
-    "canvasType": "SQL",
+    "canvasType": "List",
     "language": "graphql",
     "tableCase": "pascalCase",
     "columnCase": "camelCase"
@@ -25,7 +25,7 @@
   "table": {
     "tables": [
       {
-        "name": "answer",
+        "name": "uca_answer",
         "comment": "",
         "columns": [
           {
@@ -149,13 +149,13 @@
           "active": false,
           "top": 528.4000102138527,
           "left": 486.20000682353884,
-          "widthName": 60,
+          "widthName": 72,
           "widthComment": 60,
           "zIndex": 551
         }
       },
       {
-        "name": "degree",
+        "name": "uca_degree",
         "comment": "",
         "columns": [
           {
@@ -184,7 +184,7 @@
           {
             "name": "name",
             "comment": "",
-            "dataType": "VARCHAR",
+            "dataType": "VARCHAR(255)",
             "default": "",
             "id": "0bb2fd82-5317-48d2-9b16-481cc71c4f3c",
             "option": {
@@ -200,7 +200,7 @@
               "pfk": false,
               "widthName": 60,
               "widthComment": 60,
-              "widthDataType": 64,
+              "widthDataType": 95,
               "widthDefault": 60
             }
           }
@@ -210,13 +210,13 @@
           "active": false,
           "top": 55.99999545415269,
           "left": 24.433340538607474,
-          "widthName": 60,
+          "widthName": 71,
           "widthComment": 60,
           "zIndex": 368
         }
       },
       {
-        "name": "group",
+        "name": "uca_group",
         "comment": "",
         "columns": [
           {
@@ -248,13 +248,13 @@
           "active": false,
           "top": 741.7166460896856,
           "left": 26.41667408876927,
-          "widthName": 60,
+          "widthName": 63,
           "widthComment": 60,
           "zIndex": 371
         }
       },
       {
-        "name": "poll",
+        "name": "uca_poll",
         "comment": "",
         "columns": [
           {
@@ -338,7 +338,7 @@
         }
       },
       {
-        "name": "proffesor",
+        "name": "uca_proffesor",
         "comment": "",
         "columns": [
           {
@@ -367,7 +367,7 @@
           {
             "name": "name",
             "comment": "",
-            "dataType": "VARCHAR",
+            "dataType": "VARCHAR(255)",
             "default": "",
             "id": "b79812fc-1409-4da5-9077-1919ad20fa04",
             "option": {
@@ -383,7 +383,7 @@
               "pfk": false,
               "widthName": 60,
               "widthComment": 60,
-              "widthDataType": 64,
+              "widthDataType": 95,
               "widthDefault": 60
             }
           }
@@ -393,13 +393,13 @@
           "active": false,
           "top": 836.8000175666806,
           "left": 488.60000688076013,
-          "widthName": 60,
+          "widthName": 81,
           "widthComment": 60,
           "zIndex": 553
         }
       },
       {
-        "name": "question",
+        "name": "uca_question",
         "comment": "",
         "columns": [
           {
@@ -428,7 +428,7 @@
           {
             "name": "type",
             "comment": "",
-            "dataType": "VARCHAR",
+            "dataType": "VARCHAR(255)",
             "default": "",
             "id": "f4aa7c66-1bd6-48d6-a2ab-81a15f71b17f",
             "option": {
@@ -444,14 +444,14 @@
               "pfk": false,
               "widthName": 60,
               "widthComment": 60,
-              "widthDataType": 64,
+              "widthDataType": 95,
               "widthDefault": 60
             }
           },
           {
             "name": "subtype",
             "comment": "",
-            "dataType": "VARCHAR",
+            "dataType": "VARCHAR(255)",
             "default": "",
             "id": "53871743-8d42-454c-8896-e4ff63306c20",
             "option": {
@@ -467,14 +467,14 @@
               "pfk": false,
               "widthName": 60,
               "widthComment": 60,
-              "widthDataType": 64,
+              "widthDataType": 95,
               "widthDefault": 60
             }
           },
           {
             "name": "description",
             "comment": "",
-            "dataType": "VARCHAR",
+            "dataType": "VARCHAR(255)",
             "default": "",
             "id": "03b24418-a067-469f-ab31-54c6a21c7934",
             "option": {
@@ -490,7 +490,7 @@
               "pfk": false,
               "widthName": 64,
               "widthComment": 60,
-              "widthDataType": 64,
+              "widthDataType": 95,
               "widthDefault": 60
             }
           }
@@ -500,13 +500,13 @@
           "active": false,
           "top": 539.4499994822345,
           "left": 964.3999762868889,
-          "widthName": 60,
+          "widthName": 79,
           "widthComment": 60,
           "zIndex": 552
         }
       },
       {
-        "name": "student",
+        "name": "uca_student",
         "comment": "",
         "columns": [
           {
@@ -558,7 +558,7 @@
           {
             "name": "gender",
             "comment": "",
-            "dataType": "VARCHAR",
+            "dataType": "VARCHAR(255)",
             "default": "",
             "id": "11b851ba-ac64-40d7-9be6-5fe9bc786a8e",
             "option": {
@@ -574,7 +574,7 @@
               "pfk": false,
               "widthName": 60,
               "widthComment": 60,
-              "widthDataType": 64,
+              "widthDataType": 95,
               "widthDefault": 60
             }
           },
@@ -673,7 +673,7 @@
           {
             "name": "interest",
             "comment": "",
-            "dataType": "VARCHAR",
+            "dataType": "VARCHAR(255)",
             "default": "",
             "id": "979c5324-e0a5-4280-a7a3-a726fac046fe",
             "option": {
@@ -689,14 +689,14 @@
               "pfk": false,
               "widthName": 60,
               "widthComment": 60,
-              "widthDataType": 64,
+              "widthDataType": 95,
               "widthDefault": 60
             }
           },
           {
             "name": "mentoring",
             "comment": "",
-            "dataType": "VARCHAR",
+            "dataType": "VARCHAR(255)",
             "default": "",
             "id": "b853b21d-32c3-4458-8538-c74e3d8ff210",
             "option": {
@@ -712,14 +712,14 @@
               "pfk": false,
               "widthName": 60,
               "widthComment": 60,
-              "widthDataType": 64,
+              "widthDataType": 95,
               "widthDefault": 60
             }
           },
           {
             "name": "dificulty",
             "comment": "",
-            "dataType": "VARCHAR",
+            "dataType": "VARCHAR(255)",
             "default": "",
             "id": "0d3ee6a8-4619-4caa-8f2c-50858553e66f",
             "option": {
@@ -735,14 +735,14 @@
               "pfk": false,
               "widthName": 60,
               "widthComment": 60,
-              "widthDataType": 64,
+              "widthDataType": 95,
               "widthDefault": 60
             }
           },
           {
             "name": "expected_grade",
             "comment": "",
-            "dataType": "VARCHAR",
+            "dataType": "VARCHAR(255)",
             "default": "",
             "id": "730cb5cc-19db-4dfe-b3f5-32a5542754c2",
             "option": {
@@ -758,7 +758,7 @@
               "pfk": false,
               "widthName": 95,
               "widthComment": 60,
-              "widthDataType": 64,
+              "widthDataType": 95,
               "widthDefault": 60
             }
           },
@@ -791,13 +791,13 @@
           "active": false,
           "top": 61.60000289916982,
           "left": 471.89996531565987,
-          "widthName": 60,
+          "widthName": 73,
           "widthComment": 60,
           "zIndex": 547
         }
       },
       {
-        "name": "subject",
+        "name": "uca_subject",
         "comment": "",
         "columns": [
           {
@@ -826,7 +826,7 @@
           {
             "name": "name",
             "comment": "",
-            "dataType": "VARCHAR",
+            "dataType": "VARCHAR(255)",
             "default": "",
             "id": "477f1df8-6e24-4174-98b0-2f429b59145d",
             "option": {
@@ -842,7 +842,7 @@
               "pfk": false,
               "widthName": 60,
               "widthComment": 60,
-              "widthDataType": 64,
+              "widthDataType": 95,
               "widthDefault": 60
             }
           },
@@ -875,7 +875,7 @@
           "active": false,
           "top": 276.64998664816295,
           "left": 24.433340538607435,
-          "widthName": 60,
+          "widthName": 71,
           "widthComment": 60,
           "zIndex": 369
         }
@@ -900,7 +900,7 @@
           "columnIds": [
             "b3478eda-a857-4b7e-afcd-a447cbad404b"
           ],
-          "x": 198.43334053860747,
+          "x": 213.93334053860747,
           "y": 167.9999954541527,
           "direction": "bottom"
         },
@@ -909,7 +909,7 @@
           "columnIds": [
             "945168e7-1c5b-43f2-9df7-ee3e7455eac6"
           ],
-          "x": 198.43334053860744,
+          "x": 213.93334053860744,
           "y": 276.64998664816295,
           "direction": "top"
         }
@@ -923,7 +923,7 @@
           "columnIds": [
             "33fe7244-d4df-418a-aef0-e5f450ead9e2"
           ],
-          "x": 198.43334053860744,
+          "x": 213.93334053860744,
           "y": 411.14998664816295,
           "direction": "bottom"
         },
@@ -992,7 +992,7 @@
           "columnIds": [
             "9ac9f1db-e6a3-477e-9354-a4a20641e5bf"
           ],
-          "x": 662.6000068807601,
+          "x": 678.1000068807601,
           "y": 836.8000175666806,
           "direction": "top"
         },
@@ -1038,7 +1038,7 @@
           "columnIds": [
             "c18afa33-8839-4e07-baa1-f58efb986c1a"
           ],
-          "x": 663.3999653156599,
+          "x": 678.8999653156599,
           "y": 398.6000028991698,
           "direction": "bottom"
         },
