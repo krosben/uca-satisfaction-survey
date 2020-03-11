@@ -17,7 +17,7 @@
     },
     "database": "MySQL",
     "databaseName": "poll",
-    "canvasType": "GeneratorCode",
+    "canvasType": "SQL",
     "language": "graphql",
     "tableCase": "pascalCase",
     "columnCase": "camelCase"
