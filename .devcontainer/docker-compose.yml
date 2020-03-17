@@ -5,7 +5,6 @@ services:
       context: .
     volumes:
       - ..:/workspace
-      - ..:/var/www/html/
     command: apache2-foreground
     ports:
       - 8080:80

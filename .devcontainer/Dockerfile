@@ -25,6 +25,9 @@ ARG COMMON_SCRIPT_SHA="dev-mode"
 # Install composer from official image
 COPY --from=composer:1.9.3 /usr/bin/composer /usr/bin/composer
 
+# Change APACHE_DOCUMENT_ROOT
+ENV APACHE_DOCUMENT_ROOT /workspace/public
+
 # Configure apt and install packages
 RUN apt-get update \
   && apt-get -y install --no-install-recommends apt-utils dialog wget ca-certificates 2>&1 \
@@ -44,6 +47,10 @@ RUN apt-get update \
   && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
   && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
   && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
+  #
+  # Change APACHE_DOCUMENT_ROOT
+  && sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
+  && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf \
   #
   # Clean up
   && apt-get autoremove -y \
