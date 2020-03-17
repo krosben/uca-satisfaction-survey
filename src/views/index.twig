@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Encuesta</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+	<body>
+		<nav class="nav-bar">
+			<img src="assets/img/logo.png" alt="Logo-UCA" width="300px" height="120px">
+			<div class="title">
+				<h2>Encuesta de opinión de los/as estudiantes sobre la labor docente del profesorado</h2>
+			</div>
+		</nav>
+		<div class="content">
+			<div class="subject-code">
+				<div id="titulacion">
+					<h3>Titulación</h3>
+					<select>
+						{% for titl, value in titulacion %}
+							<option value={{value}}>{{titl}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div id="subject">
+					<h3>Asignatura</h3>
+					<select>
+						{% for asig, value in asignatura %}
+							<option value={{value}}>{{asig}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div id="group">
+					<h3>Grupo</h3>
+					<select>
+						{% for grp, value in grupo %}
+							<option value={{value}}>{{grp}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div class="student-info">
+				<h3>Información estudiante</h3>
+				<div>
+					<label for="age">Edad (años)</label>
+					<input type="number" name="age" min="18" max="99">
+				</div>
+				<div>
+					<label for="gender">Género</label>
+					<input type="text" name="gender">
+				</div>
+				<div>
+					<label for="highest-course">Curso más bajo y más alto en el que estás matriculado</label>
+					<input type="number" name="lowest-course" min="1" max="6">
+					-
+					<input type="number" name="highest-course" min="1" max="6">
+				</div>
+				<div>
+					<label for="enrollment">Veces que te has matriculado de esta asignatura</label>
+					<input type="number" name="enrollment" min="1">
+				</div>
+				<div>
+					<label for="exam">Veces que te has examinado de esta asignatura</label>
+					<input type="number" name="exam" min="1">
+				</div>
+				<div>
+					<label for="interest">La asignatura me interesa</label>
+					<input type="radio" name="interest" value="0">
+					<label>Nada
+					</label>
+					<input type="radio" name="interest" value="1">
+					<label>Algo
+					</label>
+					<input type="radio" name="interest" value="2">
+					<label>Bastante
+					</label>
+					<input type="radio" name="interest" value="3">
+					<label>Mucho
+					</label>
+				</div>
+				<div>
+					<label for="mentoring">Hago uso de las tutorías</label>
+					<input type="radio" name="mentoring" value="0">
+					<label>Nada
+					</label>
+					<input type="radio" name="mentoring" value="1">
+					<label>Algo
+					</label>
+					<input type="radio" name="mentoring" value="2">
+					<label>Bastante
+					</label>
+					<input type="radio" name="mentoring" value="3">
+					<label>Mucho
+					</label>
+				</div>
+				<div>
+					<label for="dificulty">Dificultad de esta asignatura</label>
+					<input type="radio" name="dificulty" value="0">
+					<label>Baja
+					</label>
+					<input type="radio" name="dificulty" value="1">
+					<label>Media
+					</label>
+					<input type="radio" name="dificulty" value="2">
+					<label>Alta
+					</label>
+					<input type="radio" name="dificulty" value="3">
+					<label>Muy alta
+					</label>
+				</div>
+				<div>
+					<label for="expected-grade">Calificación esperada</label>
+					<input type="radio" name="expected-grade" value="0">
+					<label>N.P.
+					</label>
+					<input type="radio" name="expected-grade" value="1">
+					<label>Suspenso
+					</label>
+					<input type="radio" name="expected-grade" value="2">
+					<label>Aprobado
+					</label>
+					<input type="radio" name="expected-grade" value="3">
+					<label>Notable
+					</label>
+					<input type="radio" name="expected-grade" value="4">
+					<label>Sobresaliente
+					</label>
+					<input type="radio" name="expected-grade" value="5">
+					<label>M.H.
+					</label>
+				</div>
+				<div>
+					<label for="assistance">Asistencia a clase (&#37; horas lectivas)</label>
+					<input type="radio" name="assistance" value="0">
+					<label>Menos de 50&#37;
+					</label>
+					<input type="radio" name="assistance" value="1">
+					<label>Entre 50&#37; y 80&#37;
+					</label>
+					<input type="radio" name="assistance" value="2">
+					<label>Más de 80&#37;
+					</label>
+				</div>
+
+			</div>
+		</div>
+	</body>
+</html>

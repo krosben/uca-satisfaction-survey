@@ -13,7 +13,9 @@
             "email": "ruben.mondom@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "twig/twig": "^3.0"
+    },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16"
     }

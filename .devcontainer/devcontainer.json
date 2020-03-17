@@ -5,6 +5,9 @@
   "workspaceFolder": "/workspace",
   "remoteUser": "vscode",
   "settings": {
+    "emmet.includeLanguages": {
+      "twig": "html"
+    },
     "terminal.integrated.shell.linux": "/bin/zsh",
     "php.suggest.basic": false,
     "editor.quickSuggestions": {
@@ -22,6 +25,7 @@
   "extensions": [
     "junstyle.php-cs-fixer",
     "felixfbecker.php-debug",
-    "felixfbecker.php-intellisense"
+    "felixfbecker.php-intellisense",
+    "mblode.twig-language-2"
   ]
 }
