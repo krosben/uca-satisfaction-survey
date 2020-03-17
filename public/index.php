@@ -8,5 +8,7 @@ $form = [
     'asignatura' => ['AS' => 0, 'PCTR' => 1],
     'titulacion' => ['GII' => 2, 'GIA' => 3],
     'grupo' => ['A' => 1, 'B' => 2],
+    'exam' => 6,
+    'enrollment' => 6,
 ];
 echo $twig->render('index.twig', $form);

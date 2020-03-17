@@ -4,97 +4,198 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Encuesta</title>
-		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css">
 	</head>
 	<body>
-		<nav class="nav-bar">
-			<img src="assets/img/logo.png" alt="Logo-UCA" width="300px" height="120px">
-			<div class="title">
-				<h2>Encuesta de opinión de los/as estudiantes sobre la labor docente del profesorado</h2>
+
+		<nav class="level" role="navigation" aria-label="main navigation">
+			<img class="level-left" src="assets/img/logo.png" alt="Logo-UCA" width="300px" height="120px">
+			<div class="level-item">
+				<h1 class="title">Encuesta de opinión de los/as estudiantes sobre la labor docente del profesorado</h1>
 			</div>
 		</nav>
-		<div class="content">
-			<div class="subject-code">
+
+		<div class="columns is-centered" style="justify-content: space-evenly">
+			<div class="column box is-narrow">
 				<div id="titulacion">
-					<h3>Titulación</h3>
-					<select>
-						{% for titl, value in titulacion %}
-							<option value={{value}}>{{titl}}</option>
-						{% endfor %}
-					</select>
+					<div class="control">
+						<h3>Titulación</h3>
+						<div class="select is-fullwidth">
+							<select>
+								{% for titl, value in titulacion %}
+									<option value={{value}}>{{titl}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
 				</div>
 				<div id="subject">
-					<h3>Asignatura</h3>
-					<select>
-						{% for asig, value in asignatura %}
-							<option value={{value}}>{{asig}}</option>
-						{% endfor %}
-					</select>
+					<div class="control">
+						<h3>Asignatura</h3>
+						<div class="select is-fullwidth">
+							<select>
+								{% for asig, value in asignatura %}
+									<option value={{value}}>{{asig}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
 				</div>
 				<div id="group">
-					<h3>Grupo</h3>
-					<select>
-						{% for grp, value in grupo %}
-							<option value={{value}}>{{grp}}</option>
-						{% endfor %}
-					</select>
+					<div class="control">
+						<h3>Grupo</h3>
+						<div class="select is-fullwidth">
+							<select>
+								{% for grp, value in grupo %}
+									<option value={{value}}>{{grp}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
 				</div>
 			</div>
 
-			<div class="student-info">
-				<h3>Información estudiante</h3>
-				<div>
-					<label for="age">Edad (años)</label>
-					<input type="number" name="age" min="18" max="99">
+			<div class="column box is-narrow">
+				<h3 class="subtitle">Información del estudiante</h3>
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">Edad (años)</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<input style="width: 20rem" class="input" type="number" name="age" min="18" max="99">
+						</div>
+					</div>
 				</div>
-				<div>
-					<label for="gender">Género</label>
-					<input type="text" name="gender">
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">Género</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<input style="width: 20rem" class="input" type="text" name="gender">
+						</div>
+					</div>
 				</div>
-				<div>
-					<label for="highest-course">Curso más bajo y más alto en el que estás matriculado</label>
-					<input type="number" name="lowest-course" min="1" max="6">
-					-
-					<input type="number" name="highest-course" min="1" max="6">
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">Curso matriculado</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<input style="width: 20rem" class="input" type="number" name="lowest-course" min="1" max="6" placeholder="Curso más bajo">
+						</div>
+						<div class="field">
+							<input style="width: 20rem" class="input" type="number" name="highest-course" min="1" max="6" placeholder="Curso más alto">
+						</div>
+					</div>
 				</div>
-				<div>
-					<label for="enrollment">Veces que te has matriculado de esta asignatura</label>
-					<input type="number" name="enrollment" min="1">
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">Matriculas realizadas</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<div class="select" name="enrollment">
+								<select>
+									{% for idk in 1..enrollment %}
+										<option value={{idk}}>{{idk}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div>
-					<label for="exam">Veces que te has examinado de esta asignatura</label>
-					<input type="number" name="exam" min="1">
+
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">Convocatorias realizadas</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<div class="select" name="exam">
+								<select>
+									{% for idk in 1..exam %}
+										<option value={{idk}}>{{idk}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div>
-					<label for="interest">La asignatura me interesa</label>
-					<input type="radio" name="interest" value="0">
-					<label>Nada
-					</label>
-					<input type="radio" name="interest" value="1">
-					<label>Algo
-					</label>
-					<input type="radio" name="interest" value="2">
-					<label>Bastante
-					</label>
-					<input type="radio" name="interest" value="3">
-					<label>Mucho
-					</label>
+
+				<div class="field is-horizontal">
+					<div class="field-label">
+						<label class="label" for="interest">La asignatura me interesa</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<label class="radio">
+								<input type="radio" name="interest" value="0">
+								Nada
+							</label>
+						</div>
+						<div class="field">
+							<label class="radio">
+
+								<input type="radio" name="interest" value="1">
+								Algo
+							</label>
+						</div>
+						<div class="field">
+							<label class="radio">
+
+								<input type="radio" name="interest" value="2">
+								Bastante
+							</label>
+						</div>
+						<div class="field">
+							<label class="radio">
+
+								<input type="radio" name="interest" value="3">
+								Mucho
+							</label>
+						</div>
+					</div>
 				</div>
-				<div>
-					<label for="mentoring">Hago uso de las tutorías</label>
-					<input type="radio" name="mentoring" value="0">
-					<label>Nada
-					</label>
-					<input type="radio" name="mentoring" value="1">
-					<label>Algo
-					</label>
-					<input type="radio" name="mentoring" value="2">
-					<label>Bastante
-					</label>
-					<input type="radio" name="mentoring" value="3">
-					<label>Mucho
-					</label>
+
+				<div class="field is-horizontal">
+					<div class="field-label">
+						<label class="label" for="mentoring">Hago uso de las tutorías</label>
+
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<label class="radio">
+								<input type="radio" name="mentoring" value="0">
+								Nada
+							</label>
+						</div>
+						<div class="field">
+							<label class="radio">
+
+								<input type="radio" name="mentoring" value="1">
+								Algo
+							</label>
+						</div>
+						<div class="field">
+							<label class="radio">
+
+								<input type="radio" name="mentoring" value="2">
+								Bastante
+							</label>
+						</div>
+						<div class="field">
+							<label class="radio">
+
+								<input type="radio" name="mentoring" value="3">
+								Mucho
+							</label>
+						</div>
+					</div>
 				</div>
+
+
 				<div>
 					<label for="dificulty">Dificultad de esta asignatura</label>
 					<input type="radio" name="dificulty" value="0">
@@ -147,4 +248,4 @@
 			</div>
 		</div>
 	</body>
-</html>
+</html></body></html>
