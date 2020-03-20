@@ -24,6 +24,7 @@ ARG COMMON_SCRIPT_SHA="dev-mode"
 
 # Install composer from official image
 COPY --from=composer:1.9.3 /usr/bin/composer /usr/bin/composer
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
 
 # Change APACHE_DOCUMENT_ROOT
 ENV APACHE_DOCUMENT_ROOT /workspace/public
@@ -43,8 +44,7 @@ RUN apt-get update \
   # && chmod +x /usr/local/bin/php-cs-fixer \
   #
   # Install xdebug
-  && yes | pecl install xdebug \
-  && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
+  && install-php-extensions xdebug intl pdo_mysql mysqli \
   && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
   && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
   #
