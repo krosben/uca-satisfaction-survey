@@ -1,0 +1,40 @@
+<div class="field">
+	<label class="label">Titulación</label>
+	<div class="control">
+		<div class="select is-primary is-fullwidth">
+			<select>
+				{% for titl, value in titulacion %}
+					<option value={{value}}>{{titl}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+</div>
+
+
+<div class="field">
+	<label class="label">Asignatura</label>
+	<div class="control">
+		<div class="select is-primary is-fullwidth">
+			<select>
+				{% for asig, value in asignatura %}
+					<option value={{value}}>{{asig}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+</div>
+
+
+<div class="field">
+	<label class="label">Grupo</label>
+	<div class="control">
+		<div class="select is-primary is-fullwidth">
+			<select>
+				{% for grp, value in grupo %}
+					<option value={{value}}>{{grp}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+</div>

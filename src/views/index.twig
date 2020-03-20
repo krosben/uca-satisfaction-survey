@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,245 +8,33 @@
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css">
 	</head>
 	<body>
-
-		<nav class="level" role="navigation" aria-label="main navigation">
-			<img class="level-left" src="assets/img/logo.png" alt="Logo-UCA" width="300px" height="120px">
-			<div class="level-item">
-				<h1 class="title">Encuesta de opinión de los/as estudiantes sobre la labor docente del profesorado</h1>
+		<!-- NavBar -->
+		<nav class="columns is-vcentered">
+			<div class="column is-3 is-centered">
+				<figure class="image">
+					<img src="assets/img/logo.png" alt="Logo-UCA" height="60px">
+				</figure>
+			</div>
+			<div class="column is-9 is-centered">
+				<h1 class="title has-text-centered">Encuesta de opinión de los/as estudiantes sobre la labor docente del profesorado</h1>
 			</div>
 		</nav>
-
-		<div class="columns is-centered" style="justify-content: space-evenly">
-			<div class="column box is-narrow">
-				<div id="titulacion">
-					<div class="control">
-						<h3>Titulación</h3>
-						<div class="select is-fullwidth">
-							<select>
-								{% for titl, value in titulacion %}
-									<option value={{value}}>{{titl}}</option>
-								{% endfor %}
-							</select>
-						</div>
+		<section class="section">
+			<form>
+				<div class="columns">
+					<div class="column is-2">
+						<div class="box is-flex" style="flex-direction:column;height:100%;">{% include "degree-info.twig" %}</div>
+					</div>
+					<div class="column is-10">
+						<div class="box">{% include "student-info.twig" %}</div>
 					</div>
 				</div>
-				<div id="subject">
-					<div class="control">
-						<h3>Asignatura</h3>
-						<div class="select is-fullwidth">
-							<select>
-								{% for asig, value in asignatura %}
-									<option value={{value}}>{{asig}}</option>
-								{% endfor %}
-							</select>
-						</div>
+				<div class="columns">
+					<div class="column">
+						<div class="box">BOX</div>
 					</div>
 				</div>
-				<div id="group">
-					<div class="control">
-						<h3>Grupo</h3>
-						<div class="select is-fullwidth">
-							<select>
-								{% for grp, value in grupo %}
-									<option value={{value}}>{{grp}}</option>
-								{% endfor %}
-							</select>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="column box is-narrow">
-				<h3 class="subtitle">Información del estudiante</h3>
-				<div class="field is-horizontal">
-					<div class="field-label is-normal">
-						<label class="label">Edad (años)</label>
-					</div>
-					<div class="field-body">
-						<div class="field">
-							<input style="width: 20rem" class="input" type="number" name="age" min="18" max="99">
-						</div>
-					</div>
-				</div>
-				<div class="field is-horizontal">
-					<div class="field-label is-normal">
-						<label class="label">Género</label>
-					</div>
-					<div class="field-body">
-						<div class="field">
-							<input style="width: 20rem" class="input" type="text" name="gender">
-						</div>
-					</div>
-				</div>
-				<div class="field is-horizontal">
-					<div class="field-label is-normal">
-						<label class="label">Curso matriculado</label>
-					</div>
-					<div class="field-body">
-						<div class="field">
-							<input style="width: 20rem" class="input" type="number" name="lowest-course" min="1" max="6" placeholder="Curso más bajo">
-						</div>
-						<div class="field">
-							<input style="width: 20rem" class="input" type="number" name="highest-course" min="1" max="6" placeholder="Curso más alto">
-						</div>
-					</div>
-				</div>
-				<div class="field is-horizontal">
-					<div class="field-label is-normal">
-						<label class="label">Matriculas realizadas</label>
-					</div>
-					<div class="field-body">
-						<div class="field">
-							<div class="select" name="enrollment">
-								<select>
-									{% for idk in 1..enrollment %}
-										<option value={{idk}}>{{idk}}</option>
-									{% endfor %}
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="field is-horizontal">
-					<div class="field-label is-normal">
-						<label class="label">Convocatorias realizadas</label>
-					</div>
-					<div class="field-body">
-						<div class="field">
-							<div class="select" name="exam">
-								<select>
-									{% for idk in 1..exam %}
-										<option value={{idk}}>{{idk}}</option>
-									{% endfor %}
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="field is-horizontal">
-					<div class="field-label">
-						<label class="label" for="interest">La asignatura me interesa</label>
-					</div>
-					<div class="field-body">
-						<div class="field">
-							<label class="radio">
-								<input type="radio" name="interest" value="0">
-								Nada
-							</label>
-						</div>
-						<div class="field">
-							<label class="radio">
-
-								<input type="radio" name="interest" value="1">
-								Algo
-							</label>
-						</div>
-						<div class="field">
-							<label class="radio">
-
-								<input type="radio" name="interest" value="2">
-								Bastante
-							</label>
-						</div>
-						<div class="field">
-							<label class="radio">
-
-								<input type="radio" name="interest" value="3">
-								Mucho
-							</label>
-						</div>
-					</div>
-				</div>
-
-				<div class="field is-horizontal">
-					<div class="field-label">
-						<label class="label" for="mentoring">Hago uso de las tutorías</label>
-
-					</div>
-					<div class="field-body">
-						<div class="field">
-							<label class="radio">
-								<input type="radio" name="mentoring" value="0">
-								Nada
-							</label>
-						</div>
-						<div class="field">
-							<label class="radio">
-
-								<input type="radio" name="mentoring" value="1">
-								Algo
-							</label>
-						</div>
-						<div class="field">
-							<label class="radio">
-
-								<input type="radio" name="mentoring" value="2">
-								Bastante
-							</label>
-						</div>
-						<div class="field">
-							<label class="radio">
-
-								<input type="radio" name="mentoring" value="3">
-								Mucho
-							</label>
-						</div>
-					</div>
-				</div>
-
-
-				<div>
-					<label for="dificulty">Dificultad de esta asignatura</label>
-					<input type="radio" name="dificulty" value="0">
-					<label>Baja
-					</label>
-					<input type="radio" name="dificulty" value="1">
-					<label>Media
-					</label>
-					<input type="radio" name="dificulty" value="2">
-					<label>Alta
-					</label>
-					<input type="radio" name="dificulty" value="3">
-					<label>Muy alta
-					</label>
-				</div>
-				<div>
-					<label for="expected-grade">Calificación esperada</label>
-					<input type="radio" name="expected-grade" value="0">
-					<label>N.P.
-					</label>
-					<input type="radio" name="expected-grade" value="1">
-					<label>Suspenso
-					</label>
-					<input type="radio" name="expected-grade" value="2">
-					<label>Aprobado
-					</label>
-					<input type="radio" name="expected-grade" value="3">
-					<label>Notable
-					</label>
-					<input type="radio" name="expected-grade" value="4">
-					<label>Sobresaliente
-					</label>
-					<input type="radio" name="expected-grade" value="5">
-					<label>M.H.
-					</label>
-				</div>
-				<div>
-					<label for="assistance">Asistencia a clase (&#37; horas lectivas)</label>
-					<input type="radio" name="assistance" value="0">
-					<label>Menos de 50&#37;
-					</label>
-					<input type="radio" name="assistance" value="1">
-					<label>Entre 50&#37; y 80&#37;
-					</label>
-					<input type="radio" name="assistance" value="2">
-					<label>Más de 80&#37;
-					</label>
-				</div>
-
-			</div>
-		</div>
+			</form>
+		</section>
 	</body>
-</html></body></html>
+</html>
