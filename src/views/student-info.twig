@@ -1,175 +1,177 @@
-<h3 class="subtitle">Información del estudiante</h3>
+<div class="container">
+	<h3 class="subtitle">Información del estudiante</h3>
 
-<!-- age -->
-<div class="field is-horizontal">
-	<div class="field-label is-normal">
-		<label class="label">Edad (años)</label>
-	</div>
-	<div class="field-body ">
-		<div class="field">
-			<input class="input is-primary" type="number" name="age" min="18" max="99">
+	<!-- age -->
+	<div class="field is-horizontal">
+		<div class="field-label is-normal">
+			<label class="label">Edad (años)</label>
+		</div>
+		<div class="field-body ">
+			<div class="field">
+				<input class="input is-primary" type="number" name="age" min="18" max="99">
+			</div>
 		</div>
 	</div>
-</div>
 
-<!-- gender -->
-<div class="field is-horizontal">
-	<div class="field-label is-normal">
-		<label class="label">Género</label>
-	</div>
-	<div class="field-body">
-		<div class="field">
-			<input class="input is-primary" type="text" name="gender">
+	<!-- gender -->
+	<div class="field is-horizontal">
+		<div class="field-label is-normal">
+			<label class="label">Género</label>
+		</div>
+		<div class="field-body">
+			<div class="field">
+				<input class="input is-primary" type="text" name="gender">
+			</div>
 		</div>
 	</div>
-</div>
 
-<!-- course -->
-<div class="field is-horizontal">
-	<div class="field-label is-normal">
-		<label class="label">Curso matriculado</label>
-	</div>
-	<div class="field-body">
-		<div class="field">
-			<p class="control">
-				<input class="input is-primary" type="number" name="lowest-course" min="1" max="6" placeholder="Curso más bajo">
-			</p>
+	<!-- course -->
+	<div class="field is-horizontal">
+		<div class="field-label is-normal">
+			<label class="label">Curso matriculado</label>
 		</div>
-		<div class="field">
-			<p class="control">
-				<input class="input is-primary" type="number" name="highest-course" min="1" max="6" placeholder="Curso más alto">
-			</p>
+		<div class="field-body">
+			<div class="field">
+				<p class="control">
+					<input class="input is-primary" type="number" name="lowest-course" min="1" max="6" placeholder="Curso más bajo">
+				</p>
+			</div>
+			<div class="field">
+				<p class="control">
+					<input class="input is-primary" type="number" name="highest-course" min="1" max="6" placeholder="Curso más alto">
+				</p>
+			</div>
 		</div>
 	</div>
-</div>
 
-<!-- enrollment -->
-<div class="field is-horizontal">
-	<div class="field-label is-normal">
-		<label class="label">Matriculas realizadas</label>
+	<!-- enrollment -->
+	<div class="field is-horizontal">
+		<div class="field-label is-normal">
+			<label class="label">Matriculas realizadas</label>
+		</div>
+		<div class="field-body">
+			<div class="field">
+				<div class="select is-primary" name="enrollment">
+					<select>
+						{% for idk in 1..enrollment %}
+							<option value={{idk}}>{{idk}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="field-body">
-		<div class="field">
-			<div class="select is-primary" name="enrollment">
-				<select>
-					{% for idk in 1..enrollment %}
-						<option value={{idk}}>{{idk}}</option>
+
+	<!-- exam -->
+	<div class="field is-horizontal">
+		<div class="field-label is-normal">
+			<label class="label">Convocatorias realizadas</label>
+		</div>
+		<div class="field-body">
+			<div class="field">
+				<div class="select is-primary" name="exam">
+					<select>
+						{% for idk in 1..exam %}
+							<option value={{idk}}>{{idk}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- interest -->
+	<div class="field is-horizontal">
+		<div class="field-label">
+			<label class="label">La asignatura me interesa</label>
+		</div>
+		<div class="field-body">
+			<div class="field is-narrow">
+				<div class="control">
+					{% for value, item in interest %}
+						<label class="radio">
+							<input type="radio" name="interest" value="{{value}}">
+							{{item}}
+						</label>
 					{% endfor %}
-				</select>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<!-- exam -->
-<div class="field is-horizontal">
-	<div class="field-label is-normal">
-		<label class="label">Convocatorias realizadas</label>
-	</div>
-	<div class="field-body">
-		<div class="field">
-			<div class="select is-primary" name="exam">
-				<select>
-					{% for idk in 1..exam %}
-						<option value={{idk}}>{{idk}}</option>
+
+	<!-- Mentoring -->
+	<div class="field is-horizontal">
+		<div class="field-label">
+			<label class="label">Hago uso de las tutorías</label>
+		</div>
+		<div class="field-body">
+			<div class="field is-narrow">
+				<div class="control">
+					{% for value, item in mentoring %}
+						<label class="radio">
+							<input type="radio" name="mentoring" value="{{value}}">
+							{{item}}
+						</label>
 					{% endfor %}
-				</select>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<!-- interest -->
-<div class="field is-horizontal">
-	<div class="field-label">
-		<label class="label">La asignatura me interesa</label>
-	</div>
-	<div class="field-body">
-		<div class="field is-narrow">
-			<div class="control">
-				{% for value, item in interest %}
-					<label class="radio">
-						<input type="radio" name="interest" value="{{value}}">
-						{{item}}
-					</label>
-				{% endfor %}
+	<!-- dificulty -->
+	<div class="field is-horizontal">
+		<div class="field-label">
+			<label class="label">Dificultad de esta asignatura</label>
+		</div>
+		<div class="field-body">
+			<div class="field is-narrow">
+				<div class="control">
+					{% for value, item in dificulty %}
+						<label class="radio">
+							<input type="radio" name="dificulty" value="{{value}}">
+							{{item}}
+						</label>
+					{% endfor %}
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-
-<!-- Mentoring -->
-<div class="field is-horizontal">
-	<div class="field-label">
-		<label class="label">Hago uso de las tutorías</label>
-	</div>
-	<div class="field-body">
-		<div class="field is-narrow">
-			<div class="control">
-				{% for value, item in mentoring %}
-					<label class="radio">
-						<input type="radio" name="mentoring" value="{{value}}">
-						{{item}}
-					</label>
-				{% endfor %}
+	<!-- expected-grade -->
+	<div class="field is-horizontal">
+		<div class="field-label">
+			<label class="label">Calificación esperada</label>
+		</div>
+		<div class="field-body">
+			<div class="field is-narrow">
+				<div class="control">
+					{% for value, item in expectedgrade %}
+						<label class="radio">
+							<input type="radio" name="expectedgrade" value="{{value}}">
+							{{item}}
+						</label>
+					{% endfor %}
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<!-- dificulty -->
-<div class="field is-horizontal">
-	<div class="field-label">
-		<label class="label">Dificultad de esta asignatura</label>
-	</div>
-	<div class="field-body">
-		<div class="field is-narrow">
-			<div class="control">
-				{% for value, item in dificulty %}
-					<label class="radio">
-						<input type="radio" name="dificulty" value="{{value}}">
-						{{item}}
-					</label>
-				{% endfor %}
-			</div>
+	<!-- assistance -->
+	<div class="field is-horizontal">
+		<div class="field-label">
+			<label class="label">Asistencia a clase (&#37; horas lectivas)</label>
 		</div>
-	</div>
-</div>
-
-<!-- expected-grade -->
-<div class="field is-horizontal">
-	<div class="field-label">
-		<label class="label">Calificación esperada</label>
-	</div>
-	<div class="field-body">
-		<div class="field is-narrow">
-			<div class="control">
-				{% for value, item in expectedgrade %}
-					<label class="radio">
-						<input type="radio" name="expectedgrade" value="{{value}}">
-						{{item}}
-					</label>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- assistance -->
-<div class="field is-horizontal">
-	<div class="field-label">
-		<label class="label">Asistencia a clase (&#37; horas lectivas)</label>
-	</div>
-	<div class="field-body">
-		<div class="field is-narrow">
-			<div class="control">
-				{% for value, item in assistance %}
-					<label class="radio">
-						<input type="radio" name="assistance" value="{{value}}">
-						{{item}}
-					</label>
-				{% endfor %}
+		<div class="field-body">
+			<div class="field is-narrow">
+				<div class="control">
+					{% for value, item in assistance %}
+						<label class="radio">
+							<input type="radio" name="assistance" value="{{value}}">
+							{{item}}
+						</label>
+					{% endfor %}
+				</div>
 			</div>
 		</div>
 	</div>

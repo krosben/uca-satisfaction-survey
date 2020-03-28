@@ -1,29 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-ES">
 
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Encuesta</title>
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css">
+		<link rel="icon" type="image/png" href="https://www.uca.es/wp-content/themes/theme_main_uca/images/logos/favicon-16x16.png" sizes="16x16">
+		<link
+		rel="icon" type="image/png" href="https://www.uca.es/wp-content/themes/theme_main_uca/images/logos/favicon-32x32.png" sizes="32x32">
+		{# <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css"> #}
+		<link rel="stylesheet" type="text/css" href="https://jenil.github.io/bulmaswatch/united/bulmaswatch.min.css">
 	</head>
 	<body>
 		<!-- NavBar -->
 		<nav class="columns is-vcentered">
 			<div class="column is-3 is-centered">
-				<figure class="image">
-					<img src="assets/img/logo.png" alt="Logo-UCA" height="60px">
+				<figure class="image" style="padding:1rem;">
+					<img src="assets/img/uca.png" alt="Logo-UCA">
 				</figure>
 			</div>
 			<div class="column is-9 is-centered">
 				<h1 class="title has-text-centered">Encuesta de opinión de los/as estudiantes sobre la labor docente del profesorado</h1>
 			</div>
 		</nav>
-		<section class="section">
+		<section style="padding:1.5rem;">
 			<form>
 				<div class="columns">
-					<div class="column is-2">
-						<div class="box is-flex" style="flex-direction:column;height:100%;">{% include "degree-info.twig" %}</div>
+					<div class="column is-2 is-flex">
+						<div class="box is-flex" style="flex-direction:column;flex:1;/*justify-content:space-around;*/">{% include "degree-info.twig" %}</div>
 					</div>
 					<div class="column is-10">
 						<div class="box">{% include "student-info.twig" %}</div>
