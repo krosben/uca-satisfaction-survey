@@ -6,6 +6,10 @@ services:
     volumes:
       - ..:/workspace
     command: apache2-foreground
+    environment:
+      - DB_DSN=mysql:host=db;port=3306;dbname=poll;
+      - DB_USER=root
+      - DB_PASS=kr0sb3n
     ports:
       - 8080:80
   db:
