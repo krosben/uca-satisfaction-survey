@@ -1,0 +1,49 @@
+{%- for group, item in questions -%}
+	<div>
+		<h2 class="title">{{-group-}}</h2>
+		{%- for subgroup, subgroups in item -%}
+			{%- if subgroup matches '/^\\d+$/' -%}
+				<div class="columns">
+					<div class="column">
+						{{-subgroups-}}
+					</div>
+					<div class="column">
+						<div class="field is-narrow">
+							<div class="control">
+								{%- for key, answer in answers -%}
+									<label class="radio">
+										<input type="radio" name="assistance" value="{{-key-}}">
+										{{-answer-}}
+									</label>
+								{%- endfor -%}
+							</div>
+						</div>
+					</div>
+				</div>
+			{%- else -%}
+				<div>
+					<h3 class="subtitle">{{-subgroup-}}</h3>
+					{%- for s in subgroups -%}
+						<div class="columns">
+							<div class="column">
+								{{-s-}}
+							</div>
+							<div class="column">
+								<div class="field is-narrow">
+									<div class="control">
+										{%- for key, answer in answers -%}
+											<label class="radio">
+												<input type="radio" name="assistance" value="{{-key-}}">
+												{{-answer-}}
+											</label>
+										{%- endfor -%}
+									</div>
+								</div>
+							</div>
+						</div>
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+		{%- endfor -%}
+	</div>
+{%- endfor -%}
