@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +9,7 @@
 		rel="icon" type="image/png" href="https://www.uca.es/wp-content/themes/theme_main_uca/images/logos/favicon-32x32.png" sizes="32x32">
 		{# <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css"> #}
 		<link rel="stylesheet" type="text/css" href="https://jenil.github.io/bulmaswatch/united/bulmaswatch.min.css">
+		<script defer src="js/tools.js"></script>
 	</head>
 	<body>
 		<!-- NavBar -->
@@ -38,6 +38,19 @@
 						<div class="box is-flex" style="flex-direction:column;flex:1;">{% include "questions.twig" %}</div>
 					</div>
 				</div>
+				<div class="columns">
+					<div class="column">
+						<div class="box is-flex" style="flex-direction:row;justify-content: space-between;flex:1;">
+							<div class="control">
+								<button class="button is-light">Admin</button>
+							</div>
+							<div class="control">
+								<button class="button is-primary">Enviar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</form>
 		</section>
 	</body>

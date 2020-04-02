@@ -1,40 +1,52 @@
-<div class="field">
-	<label class="label">Titulación</label>
-	<div class="control">
-		<div class="select is-primary is-fullwidth">
-			<select>
-				{% for titl, value in titulacion %}
-					<option value={{value}}>{{titl}}</option>
-				{% endfor %}
-			</select>
+<div class="container">
+	<h3 class="subtitle">Código de asignatura</h3>
+	<div class="field">
+		<label class="label">Titulación</label>
+		<div class="control">
+			<div class="select is-primary is-fullwidth">
+				<select id="degree-id">
+					<option disabled selected value>
+						-- Selecciona --
+					</option>
+					{% for degree in degrees %}
+						<option value={{degree.id}}>{{degree.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 	</div>
-</div>
 
 
-<div class="field">
-	<label class="label">Asignatura</label>
-	<div class="control">
-		<div class="select is-primary is-fullwidth">
-			<select>
-				{% for asig, value in asignatura %}
-					<option value={{value}}>{{asig}}</option>
-				{% endfor %}
-			</select>
+	<div class="field">
+		<label class="label">Asignatura</label>
+		<div class="control">
+			<div class="select is-primary is-fullwidth">
+				<select id="subject-id">
+					<option disabled selected value>
+						-- Selecciona --
+					</option>
+					{% for subject in subjects %}
+						<option value={{subject.id}} data-id-degree={{subject.id_degree}}>{{subject.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 	</div>
-</div>
 
 
-<div class="field">
-	<label class="label">Grupo</label>
-	<div class="control">
-		<div class="select is-primary is-fullwidth">
-			<select>
-				{% for grp, value in grupo %}
-					<option value={{value}}>{{grp}}</option>
-				{% endfor %}
-			</select>
+	<div class="field">
+		<label class="label">Grupo</label>
+		<div class="control">
+			<div class="select is-primary is-fullwidth">
+				<select id="group-id">
+					<option disabled selected value>
+						-- Selecciona --
+					</option>
+					{% for group in groups %}
+						<option value={{group.id}}>{{group.id}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 	</div>
 </div>

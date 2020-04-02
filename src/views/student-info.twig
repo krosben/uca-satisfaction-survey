@@ -20,9 +20,19 @@
 		</div>
 		<div class="field-body">
 			<div class="field">
-				<input class="input is-primary" type="text" name="gender">
+				<div class="select is-primary is-fullwidth" name="gender">
+					<select>
+						<option disabled selected value>
+							-- Selecciona --
+						</option>
+						{% for gender in genders %}
+							<option value={{gender.id}}>{{gender.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
 			</div>
 		</div>
+
 	</div>
 
 	<!-- course -->
@@ -51,8 +61,11 @@
 		</div>
 		<div class="field-body">
 			<div class="field">
-				<div class="select is-primary" name="enrollment">
+				<div class="select is-primary is-fullwidth" name="enrollment">
 					<select>
+						<option disabled selected value>
+							-- Selecciona --
+						</option>
 						{% for idk in 1..enrollment %}
 							<option value={{idk}}>{{idk}}</option>
 						{% endfor %}
@@ -69,8 +82,11 @@
 		</div>
 		<div class="field-body">
 			<div class="field">
-				<div class="select is-primary" name="exam">
+				<div class="select is-primary is-fullwidth" name="exam">
 					<select>
+						<option disabled selected value>
+							-- Selecciona --
+						</option>
 						{% for idk in 1..exam %}
 							<option value={{idk}}>{{idk}}</option>
 						{% endfor %}
@@ -88,10 +104,10 @@
 		<div class="field-body">
 			<div class="field is-narrow">
 				<div class="control">
-					{% for value, item in interest %}
+					{% for interes in interest %}
 						<label class="radio">
-							<input type="radio" name="interest" value="{{value}}">
-							{{item}}
+							<input type="radio" name="interest" value="{{interes.id}}">
+							{{interes.name}}
 						</label>
 					{% endfor %}
 				</div>
@@ -108,10 +124,10 @@
 		<div class="field-body">
 			<div class="field is-narrow">
 				<div class="control">
-					{% for value, item in mentoring %}
+					{% for mentor in mentoring %}
 						<label class="radio">
-							<input type="radio" name="mentoring" value="{{value}}">
-							{{item}}
+							<input type="radio" name="mentoring" value="{{mentor.id}}">
+							{{mentor.name}}
 						</label>
 					{% endfor %}
 				</div>
@@ -127,10 +143,10 @@
 		<div class="field-body">
 			<div class="field is-narrow">
 				<div class="control">
-					{% for value, item in dificulty %}
+					{% for dificult in dificulty %}
 						<label class="radio">
-							<input type="radio" name="dificulty" value="{{value}}">
-							{{item}}
+							<input type="radio" name="dificulty" value="{{dificult.id}}">
+							{{dificult.name}}
 						</label>
 					{% endfor %}
 				</div>
@@ -146,10 +162,10 @@
 		<div class="field-body">
 			<div class="field is-narrow">
 				<div class="control">
-					{% for value, item in expectedgrade %}
+					{% for expected in expectedgrade %}
 						<label class="radio">
-							<input type="radio" name="expectedgrade" value="{{value}}">
-							{{item}}
+							<input type="radio" name="expectedgrade" value="{{expected.id}}">
+							{{expected.name}}
 						</label>
 					{% endfor %}
 				</div>
@@ -165,10 +181,10 @@
 		<div class="field-body">
 			<div class="field is-narrow">
 				<div class="control">
-					{% for value, item in assistance %}
+					{% for assist in assistance %}
 						<label class="radio">
-							<input type="radio" name="assistance" value="{{value}}">
-							{{item}}
+							<input type="radio" name="assistance" value="{{assist.id}}">
+							{{assist.name}}
 						</label>
 					{% endfor %}
 				</div>

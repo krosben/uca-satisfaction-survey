@@ -1,53 +1,55 @@
-{%- for group, item in questions -%}
-	<div>
-		<h2 class="title">{{-group-}}</h2>
-		{%- for subgroup, subgroups in item -%}
-			{%- if subgroup matches '/^\\d+$/' -%}
-				<div class="columns">
-					<div class="column">
-						{{-subgroups-}}
+<div>
+	<div class="columns">
+		<div class="column is-6"></div>
+		{% for column in 1..columns %}
+			<div class="column {% if column in 2..columns %}is-hidden-mobile{% endif %}">
+				<div class="field">
+					<label class="label">Profesor
+						{{ column-}}</label>
+					<div class="control">
+						<div class="select is-primary is-fullwidth">
+							<select>
+								<option disabled selected value>
+									-- Selecciona --
+								</option>
+								{% for proffesor in proffesors %}
+									<option value={{proffesor.id}}>{{proffesor.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
 					</div>
-					{%- for i in 1..columns -%}
-						<div class="column">
-							<div class="field is-narrow">
-								<div class="control">
-									{%- for key, answer in answers -%}
-										<label class="radio">
-											<input type="radio" name="assistance" value="{{-key-}}">
-											{{-answer-}}
-										</label>
-									{%- endfor -%}
-								</div>
-							</div>
-						</div>
-					{%- endfor -%}
 				</div>
-			{%- else -%}
-				<div>
-					<h3 class="subtitle">{{-subgroup-}}</h3>
-					{%- for s in subgroups -%}
-						<div class="columns">
-							<div class="column">
-								{{-s-}}
-							</div>
-							{%- for i in 1..columns -%}
-								<div class="column">
-									<div class="field is-narrow">
-										<div class="control">
-											{%- for key, answer in answers -%}
-												<label class="radio">
-													<input type="radio" name="assistance" value="{{-key-}}">
-													{{-answer-}}
-												</label>
-											{%- endfor -%}
-										</div>
-									</div>
-								</div>
-							{%- endfor -%}
-						</div>
-					{%- endfor -%}
-				</div>
-			{%- endif -%}
-		{%- endfor -%}
+			</div>
+		{% endfor %}
 	</div>
-{%- endfor -%}
+	{% for type,typeitems in questions %}
+		<div class="columns">
+			<h2 class="title">{{-type-}}</h2>
+		</div>
+		{% for subtype, subtypeitems in typeitems %}
+			<div class="columns">
+				<h3 class="subtitle" style="margin-top: 1.5rem">{{-subtype-}}</h3>
+			</div>
+			{% for question in subtypeitems %}
+
+				<div class="columns" style="background-color: {% if loop.index is odd %} hsl(0, 0%, 95%) {% else %} #FFFFFF {% endif %};">
+					<div class="column is-6">
+						{{ question.description }}
+					</div>
+					{% for item in 1..columns %}
+						<div class="column {% if item in 2..columns %}is-hidden-mobile{% endif %}">
+							<div class="control">
+								{%- for key, answer in answers -%}
+									<label class="radio">
+										<input type="radio" name="{{question.id}}-{{i}}" value="{{i}}-{{key}}">
+										{{answer}}
+									</label>
+								{%- endfor -%}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			{% endfor %}
+		{% endfor %}
+	{% endfor %}
+</div>

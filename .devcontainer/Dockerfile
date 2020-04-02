@@ -44,7 +44,7 @@ RUN apt-get update \
   # && chmod +x /usr/local/bin/php-cs-fixer \
   #
   # Install xdebug
-  && install-php-extensions xdebug intl pdo_mysql mysqli \
+  && install-php-extensions xdebug pdo_mysql \
   && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
   && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
   #
@@ -55,7 +55,8 @@ RUN apt-get update \
   # Clean up
   && apt-get autoremove -y \
   && apt-get clean -y \
-  && rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/* \
+  && a2enmod rewrite
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog

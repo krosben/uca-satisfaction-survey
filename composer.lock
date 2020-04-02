@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6877d7b8b0862a2b659ccdc6fee13d81",
+    "content-hash": "3f909addf96bd3abeba51cba4ab3c4a7",
     "packages": [
+        {
+            "name": "jakezatecky/array_group_by",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jakezatecky/array_group_by.git",
+                "reference": "275dd3e774aeff9fb8745727dd13c9f9400405c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jakezatecky/array_group_by/zipball/275dd3e774aeff9fb8745727dd13c9f9400405c3",
+                "reference": "275dd3e774aeff9fb8745727dd13c9f9400405c3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0.6"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/array_group_by.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jake Zatecky"
+                }
+            ],
+            "description": "A function that groups/splits an array by the values of a given key or keys.",
+            "homepage": "https://github.com/jakezatecky/array_group_by",
+            "keywords": [
+                "array",
+                "array_group_by",
+                "array_key_split",
+                "group",
+                "split"
+            ],
+            "time": "2017-10-07T18:50:43+00:00"
+        },
         {
             "name": "opis/database",
             "version": "4.1.1",
@@ -67,6 +113,50 @@
                 "sqlite"
             ],
             "time": "2020-02-03T10:14:30+00:00"
+        },
+        {
+            "name": "phroute/phroute",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrjgreen/phroute.git",
+                "reference": "dbe2b986f9ee1dd33dc956fcc35d1fa22e8e196c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrjgreen/phroute/zipball/dbe2b986f9ee1dd33dc956fcc35d1fa22e8e196c",
+                "reference": "dbe2b986f9ee1dd33dc956fcc35d1fa22e8e196c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phroute\\Phroute\\": "src/Phroute"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Joe Green",
+                    "email": "joe.green.0991@gmail.com"
+                }
+            ],
+            "description": "Fast, fully featured restful request router for PHP",
+            "keywords": [
+                "router",
+                "routing"
+            ],
+            "time": "2015-07-22T20:46:43+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
