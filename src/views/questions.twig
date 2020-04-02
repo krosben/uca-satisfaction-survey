@@ -7,18 +7,20 @@
 					<div class="column">
 						{{-subgroups-}}
 					</div>
-					<div class="column">
-						<div class="field is-narrow">
-							<div class="control">
-								{%- for key, answer in answers -%}
-									<label class="radio">
-										<input type="radio" name="assistance" value="{{-key-}}">
-										{{-answer-}}
-									</label>
-								{%- endfor -%}
+					{%- for i in 1..columns -%}
+						<div class="column">
+							<div class="field is-narrow">
+								<div class="control">
+									{%- for key, answer in answers -%}
+										<label class="radio">
+											<input type="radio" name="assistance" value="{{-key-}}">
+											{{-answer-}}
+										</label>
+									{%- endfor -%}
+								</div>
 							</div>
 						</div>
-					</div>
+					{%- endfor -%}
 				</div>
 			{%- else -%}
 				<div>
@@ -28,18 +30,20 @@
 							<div class="column">
 								{{-s-}}
 							</div>
-							<div class="column">
-								<div class="field is-narrow">
-									<div class="control">
-										{%- for key, answer in answers -%}
-											<label class="radio">
-												<input type="radio" name="assistance" value="{{-key-}}">
-												{{-answer-}}
-											</label>
-										{%- endfor -%}
+							{%- for i in 1..columns -%}
+								<div class="column">
+									<div class="field is-narrow">
+										<div class="control">
+											{%- for key, answer in answers -%}
+												<label class="radio">
+													<input type="radio" name="assistance" value="{{-key-}}">
+													{{-answer-}}
+												</label>
+											{%- endfor -%}
+										</div>
 									</div>
 								</div>
-							</div>
+							{%- endfor -%}
 						</div>
 					{%- endfor -%}
 				</div>

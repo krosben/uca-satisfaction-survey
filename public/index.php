@@ -55,6 +55,8 @@ $form = [
         ],
     ],
     'answers' => ['NS', '1', '2', '3', '4', '5'],
+    'profesors' => ['De la Huerta', 'Josefi', 'Maite', 'Paco'],
+    'columns' => 3,
 ];
 
 echo $twig->render('index.twig', $form);
