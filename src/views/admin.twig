@@ -1,63 +1,43 @@
-<!DOCTYPE html>
-<html lang="es-ES">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Admin</title>
-		<link rel="icon" type="image/png" href="https://www.uca.es/wp-content/themes/theme_main_uca/images/logos/favicon-16x16.png" sizes="16x16">
-		<link
-		rel="icon" type="image/png" href="https://www.uca.es/wp-content/themes/theme_main_uca/images/logos/favicon-32x32.png" sizes="32x32">
-		{# <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css"> #}
-		<link rel="stylesheet" type="text/css" href="https://jenil.github.io/bulmaswatch/united/bulmaswatch.min.css">
-		<script defer src="js/tools.js"></script>
-	</head>
-	<body>
-		<!-- NavBar -->
-		<nav class="columns is-vcentered">
-			<div class="column is-3 is-centered">
-				<figure class="image" style="padding:1rem;">
-					<img src="assets/img/uca.png" alt="Logo-UCA">
-				</figure>
+{% extends "layout/app.twig" %}
+{% block title %}
+	Admin
+{% endblock %}
+{% block head %}{% endblock %}
 
-			</div>
-			<div class="column is-9 is-centered">
-				<h1 class="title has-text-centered">Apartado del administrador</h1>
-			</div>
-		</nav>
-		<section class="hero">
-			<div class="hero-body">
-				<div class="container">
-					<div class="columns is-centered">
-						<div class="column is-5-tablet is-4-desktop is-3-widescreen">
-							<form action="" class="box">
-								<div class="field">
-									<label for="" class="label">Email</label>
-									<div class="control">
-										<input type="email" placeholder="e.g. bobsmith@gmail.com" class="input is-primary" required>
-									</div>
-								</div>
-								<div class="field">
-									<label for="" class="label">Password</label>
-									<div class="control">
-										<input type="password" placeholder="*******" class="input is-primary" required>
-									</div>
-								</div>
-								<div class="field">
-									<label for="" class="checkbox">
-										<input type="checkbox">
-										Remember me
-									</label>
-								</div>
-								<div class="field">
-									<button class="button is-primary is-fullwidth">
-										Login
-									</button>
-								</div>
-							</form>
+{% block headertitle %}
+	Apartado del administrador
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="columns is-centered">
+			<div class="column is-5-tablet is-4-desktop is-3-widescreen">
+				<form action="" class="box">
+					<div class="field">
+						<label for="" class="label">Email</label>
+						<div class="control">
+							<input type="email" placeholder="e.g. bobsmith@gmail.com" class="input is-primary" required>
 						</div>
 					</div>
-				</div>
+					<div class="field">
+						<label for="" class="label">Password</label>
+						<div class="control">
+							<input type="password" placeholder="*******" class="input is-primary" required>
+						</div>
+					</div>
+					<div class="field">
+						<label for="" class="checkbox">
+							<input type="checkbox">
+							Remember me
+						</label>
+					</div>
+					<div class="field">
+						<button class="button is-primary is-fullwidth">
+							Login
+						</button>
+					</div>
+				</form>
 			</div>
-		</section>
-	</body>
-</html>
+		</div>
+	</div>
+{% endblock %}
