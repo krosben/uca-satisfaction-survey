@@ -60,8 +60,8 @@ $generateInsert('degrees', [
     'GITI',
 ]);
 
-for ($i = 0; $i < 3; ++$i) {
-    $db->insert([])->into('groups');
+foreach ([1, 2, 3] as $group) {
+    $db->insert(['id' => $group])->into('groups');
 }
 
 $subjects = [

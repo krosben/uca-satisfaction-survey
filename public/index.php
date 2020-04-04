@@ -1,51 +1,51 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
-use Opis\Database\Connection;
-use Opis\Database\Database;
-use Phroute\Phroute\Dispatcher;
-use Phroute\Phroute\RouteCollector;
+use Rakit\Validation\Validator;
 
-$connection = new Connection(
-    getenv('DB_DSN'),
-    getenv('DB_USER'),
-    getenv('DB_PASS')
-);
+$app = new \App\Application();
 
-$db = new Database($connection);
-$loader = new \Twig\Loader\FilesystemLoader('../src/views');
-$twig = new \Twig\Environment($loader);
-$collector = new RouteCollector();
-
-$collector->get('/', function () use ($twig, $db) {
+$app->router->get('/', function () use ($app) {
     $form = [
-        'subjects' => $db->from('subjects')->select(['id', 'name', 'id_degree'])->all(),
-        'degrees' => $db->from('degrees')->select(['id', 'name'])->all(),
-        'groups' => $db->from('groups')->select()->all(),
+        'subjects' => $app->db->from('subjects')->select(['id', 'name', 'id_degree'])->all(),
+        'degrees' => $app->db->from('degrees')->select(['id', 'name'])->all(),
+        'groups' => $app->db->from('groups')->select()->all(),
         'exam' => 6,
         'enrollment' => 6,
-        'genders' => $db->from('gender')->select()->all(),
-        'mentoring' => $db->from('mentoring')->select()->all(),
-        'interest' => $db->from('interest')->select()->all(),
-        'expectedgrade' => $db->from('expected_grade')->select()->all(),
-        'dificulty' => $db->from('dificulty')->select()->all(),
-        'assistance' => $db->from('assistance')->select()->all(),
-        'questions' => array_group_by($db->from('questions')->select()->all(), 'type', 'subtype'),
-        'proffesors' => $db->from('proffesors')->select()->all(),
+        'genders' => $app->db->from('gender')->select()->all(),
+        'mentoring' => $app->db->from('mentoring')->select()->all(),
+        'interest' => $app->db->from('interest')->select()->all(),
+        'expectedgrade' => $app->db->from('expected_grade')->select()->all(),
+        'dificulty' => $app->db->from('dificulty')->select()->all(),
+        'assistance' => $app->db->from('assistance')->select()->all(),
+        'questions' => array_group_by($app->db->from('questions')->select()->all(), 'type', 'subtype'),
+        'proffesors' => $app->db->from('proffesors')->select()->all(),
         'answers' => ['NS', '1', '2', '3', '4', '5'],
         'columns' => 3,
     ];
 
-    return $twig->render('index.twig', $form);
+    return $app->twig->render('index.twig', $form);
 });
 
-$collector->get('admin', function () use ($twig) {
-    return $twig->render('admin.twig');
+$app->router->get('admin', function () use ($app) {
+    return $app->twig->render('admin.twig');
 });
 
-$dispatcher = new Dispatcher($collector->getData());
+$app->router->post('submit', function () {
+    $validator = new Validator();
+    $validation = $validator->make($_POST, [
+        'age' => 'required|numeric',
+        'lowest-course' => 'required|numeric',
+        'highest-course' => 'required|numeric',
+        'interest' => 'required|numeric',
+        'mentoring' => 'required|numeric',
+        'dificulty' => 'required|numeric',
+        'expectedgrade' => 'required|numeric',
+        'assistance' => 'required|numeric',
+    ]);
+    $validation->validate();
+    print_r($_POST);
+});
 
-$response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-
-echo $response;
+$app->run();

@@ -1,0 +1,14 @@
+vendor
+**/.DS_Store
+.vscode
+.devcontainer
+assets
+data
+.all-contributorsrc
+.gitignore
+.git
+*.vuerd.json
+*.toml
+*.md
+Dockerfile
+.dockerignore

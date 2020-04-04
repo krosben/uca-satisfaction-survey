@@ -1,25 +1,31 @@
 {
-    "name": "krosben/uca-satisfaction-survey",
-    "description": "student opinion survey",
-    "type": "project",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "KROSF",
-            "email": "rodrigosanabria22@gmail.com"
-        },
-        {
-            "name": "RubenZx",
-            "email": "ruben.mondom@gmail.com"
-        }
-    ],
-    "require": {
-        "twig/twig": "^3.0",
-        "opis/database": "^4.1",
-        "jakezatecky/array_group_by": "^2.0",
-        "phroute/phroute": "^2.1"
+  "name": "krosben/uca-satisfaction-survey",
+  "description": "student opinion survey",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "KROSF",
+      "email": "rodrigosanabria22@gmail.com"
     },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16"
+    {
+      "name": "RubenZx",
+      "email": "ruben.mondom@gmail.com"
     }
+  ],
+  "require": {
+    "twig/twig": "^3.0",
+    "opis/database": "^4.1",
+    "jakezatecky/array_group_by": "^2.0",
+    "phroute/phroute": "^2.1",
+    "rakit/validation": "^1.2"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.16"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  }
 }

@@ -8,7 +8,7 @@
 						{{ column-}}</label>
 					<div class="control">
 						<div class="select is-primary is-fullwidth">
-							<select>
+							<select name="proffesors[{{column}}]">
 								<option disabled selected value>
 									-- Selecciona --
 								</option>
@@ -36,12 +36,12 @@
 					<div class="column is-6">
 						{{ question.description }}
 					</div>
-					{% for item in 1..columns %}
-						<div class="column {% if item in 2..columns %}is-hidden-mobile{% endif %}">
+					{% for column in 1..columns %}
+						<div class="column {% if column in 2..columns %}is-hidden-mobile{% endif %}">
 							<div class="control">
 								{%- for key, answer in answers -%}
 									<label class="radio">
-										<input type="radio" name="{{question.id}}-{{i}}" value="{{i}}-{{key}}">
+										<input type="radio" name="answers[{{column}}][{{question.id}}]" value="{{key}}">
 										{{answer}}
 									</label>
 								{%- endfor -%}
