@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ES-es">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/png" href="https://www.uca.es/wp-content/themes/theme_main_uca/images/logos/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="https://www.uca.es/wp-content/themes/theme_main_uca/images/logos/favicon-32x32.png" sizes="32x32">
+		<link rel="stylesheet" type="text/css" href="https://jenil.github.io/bulmaswatch/united/bulmaswatch.min.css">
+		<title>Error
+			{{code}}</title>
+		<style>
+			html {
+				height: 100%;
+			}
+
+			body {
+				min-height: 100%;
+				background: radial-gradient(black 3px, transparent 4px), radial-gradient(black 3px, transparent 4px), linear-gradient(#f5f5f5 4px, transparent 0), linear-gradient(45deg, transparent 74px, transparent 75px, #a4a4a4 75px, #a4a4a4 76px, transparent 77px, transparent 109px), linear-gradient(-45deg, transparent 75px, transparent 76px, #a4a4a4 76px, #a4a4a4 77px, transparent 78px, transparent 109px), #f5f5f5;
+				background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
+				background-position: 54px 55px, 0 0, 0 0, 0 0, 0 0;
+			}
+
+			.center {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				height: 100vh;
+			}
+
+			h1 {
+				font-size: 3rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="center">
+			<div class="box">
+				<h1 class="title is-1">
+					<span class="has-text-primary">{{code}}</span>
+					-
+					{{message}}</h1>
+			</div>
+		</div>
+	</body>
+
+</html>

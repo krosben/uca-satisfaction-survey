@@ -2,8 +2,6 @@
 
 require_once '../vendor/autoload.php';
 
-use Rakit\Validation\Validator;
-
 $app = new \App\Application();
 
 $app->router->get('/', function () use ($app) {
@@ -32,20 +30,43 @@ $app->router->get('admin', function () use ($app) {
     return $app->twig->render('admin.twig');
 });
 
-$app->router->post('submit', function () {
-    $validator = new Validator();
-    $validation = $validator->make($_POST, [
+$app->router->post('submit', function () use ($app) {
+    $validation = $app->validator->make($_POST, [
+        'degree' => 'required|numeric',
+        'subject' => 'required|numeric',
+        'group' => 'required|numeric',
         'age' => 'required|numeric',
+        'gender' => 'required|numeric',
         'lowest-course' => 'required|numeric',
         'highest-course' => 'required|numeric',
+        'enrollment' => 'required|numeric',
+        'exam' => 'required|numeric',
         'interest' => 'required|numeric',
         'mentoring' => 'required|numeric',
         'dificulty' => 'required|numeric',
         'expectedgrade' => 'required|numeric',
         'assistance' => 'required|numeric',
+        'proffesors' => 'required|array|min:1|max:3',
+        'proffesors.*' => 'required|numeric',
+        'answers' => 'required|array|equal:proffesors',
+        'answers.*' => 'required|array|min:23|max:23',
     ]);
+
     $validation->validate();
-    print_r($_POST);
+
+    if ($validation->fails()) {
+        // TODO: Send errors to index
+        $errors = $validation->errors();
+        echo '<pre>';
+        print_r($errors->firstOfAll());
+        print_r($_POST);
+        echo '</pre>';
+        exit;
+    }
+
+    $app->savePoll($validation->getValidData());
+
+    return $app->twig->render('success.twig');
 });
 
 $app->run();
