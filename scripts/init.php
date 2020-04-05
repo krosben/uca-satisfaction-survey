@@ -46,7 +46,6 @@ $db->createTable('assistance', function (CreateTable $table) {
 $db->createTable('students', function (CreateTable $table) {
     $table->integer('id')->autoincrement()->size('normal')->notNull();
     $table->integer('age')->size('normal')->notNull();
-    $table->string('age')->notNull();
     $table->integer('highest_course')->size('normal')->notNull();
     $table->integer('lowest_course')->size('normal')->notNull();
     $table->integer('enrollment')->size('normal')->notNull();
