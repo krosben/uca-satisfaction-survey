@@ -5,15 +5,6 @@ namespace Scripts;
 use Opis\Database\Connection;
 use Opis\Database\Database;
 
-function isAssoc(array $arr)
-{
-    if ([] === $arr) {
-        return false;
-    }
-
-    return array_keys($arr) !== range(0, count($arr) - 1);
-}
-
 class DB
 {
     /**
@@ -37,13 +28,13 @@ class DB
 
     public function insertMany(array $rows, string $table, string $column = null)
     {
-        if (isAssoc($rows)) {
-            foreach ($rows as $row) {
-                $this->db->insert($row)->into($table);
-            }
-        } elseif (!is_null($column)) {
+        if (!is_null($column)) {
             foreach ($rows as $value) {
                 $this->db->insert([$column => $value])->into($table);
+            }
+        } else {
+            foreach ($rows as $row) {
+                $this->db->insert($row)->into($table);
             }
         }
     }
