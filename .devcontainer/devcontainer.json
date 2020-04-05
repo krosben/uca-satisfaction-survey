@@ -26,6 +26,7 @@
     "junstyle.php-cs-fixer",
     "felixfbecker.php-debug",
     "felixfbecker.php-intellisense",
-    "mblode.twig-language-2"
+    "mblode.twig-language-2",
+    "zignd.html-css-class-completion"
   ]
 }
