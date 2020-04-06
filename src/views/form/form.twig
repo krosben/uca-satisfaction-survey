@@ -25,3 +25,15 @@
 		</div>
 	</div>
 </form>
+{% if errors.proffesors or errors.answers%}
+	<script src="js/bulma-toast.min.js"></script>
+	<script>
+		bulmaToast.toast({
+message: "{{ errors.proffesors }}" || "{{ errors.answers }}",
+position: "top-center",
+type: "is-danger",
+duration: 3000,
+dismissible: true
+});
+	</script>
+{% endif %}

@@ -9,11 +9,11 @@
 					<div class="control">
 						<div class="select is-primary is-fullwidth">
 							<select name="proffesors[{{column}}]">
-								<option disabled selected value>
+								<option disabled {% if not attribute(valid.proffesors, column) %} selected {% endif %} value>
 									-- Selecciona --
 								</option>
 								{% for proffesor in proffesors %}
-									<option value={{proffesor.id}}>{{proffesor.name}}</option>
+									<option value={{proffesor.id}} {% if attribute(valid.proffesors, column) and attribute(valid.proffesors, column) == proffesor.id and attribute(valid.answers, column)|length %} selected {% endif %}>{{proffesor.name}}</option>
 								{% endfor %}
 							</select>
 						</div>
@@ -41,7 +41,7 @@
 							<div class="control">
 								{%- for key, answer in answers -%}
 									<label class="radio">
-										<input type="radio" name="answers[{{column}}][{{question.id}}]" value="{{key}}">
+										<input type="radio" name="answers[{{column}}][{{question.id}}]" value="{{key}}" {% if attribute(attribute(valid.answers, column),question.id) and attribute(attribute(valid.answers, column),question.id) == key%} checked {% endif %}>
 										{{answer}}
 									</label>
 								{%- endfor -%}
