@@ -49,18 +49,18 @@
 		<div class="field-body">
 			<div class="field">
 				<p class="control">
-					<input class="input is-primary" type="number" name="lowest-course" min="1" max="6" placeholder="Curso más bajo">
+					<input class="input is-primary" type="number" name="lowest_course" min="1" max="6" placeholder="Curso más bajo">
 				</p>
-				{% if errors['lowest-course'] %}
-					<p class="help is-danger">{{errors['lowest-course']}}</p>
+				{% if errors.lowest_course %}
+					<p class="help is-danger">{{errors.lowest_course}}</p>
 				{% endif %}
 			</div>
 			<div class="field">
 				<p class="control">
-					<input class="input is-primary" type="number" name="highest-course" min="1" max="6" placeholder="Curso más alto">
+					<input class="input is-primary" type="number" name="highest_course" min="1" max="6" placeholder="Curso más alto">
 				</p>
-				{% if errors['highest-course'] %}
-					<p class="help is-danger">{{errors['highest-course']}}</p>
+				{% if errors.highest_course %}
+					<p class="help is-danger">{{errors.highest_course}}</p>
 				{% endif %}
 			</div>
 		</div>

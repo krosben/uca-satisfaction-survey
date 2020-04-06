@@ -80,8 +80,8 @@ class Application
             'id_dificulty' => $data['dificulty'],
             'id_mentoring' => $data['mentoring'],
             'id_assitance' => $data['assistance'],
-            'lowest_course' => $data['lowest-course'],
-            'highest_course' => $data['highest-course'],
+            'lowest_course' => $data['lowest_course'],
+            'highest_course' => $data['highest_course'],
             'id_expected_grade' => $data['expectedgrade'],
         ];
 
@@ -146,8 +146,8 @@ class Application
             'group' => 'required|numeric',
             'age' => 'required|numeric',
             'gender' => 'required|numeric',
-            'lowest-course' => 'required|numeric',
-            'highest-course' => 'required|numeric',
+            'lowest_course' => 'required|numeric',
+            'highest_course' => 'required|numeric',
             'enrollment' => 'required|numeric',
             'exam' => 'required|numeric',
             'interest' => 'required|numeric',
