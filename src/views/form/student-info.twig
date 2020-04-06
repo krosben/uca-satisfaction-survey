@@ -9,6 +9,9 @@
 		<div class="field-body ">
 			<div class="field">
 				<input class="input is-primary" type="number" name="age" min="18" max="99">
+				{% if errors.age %}
+					<p class="help is-danger">{{errors.age}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -30,6 +33,9 @@
 						{% endfor %}
 					</select>
 				</div>
+				{% if errors.gender %}
+					<p class="help is-danger">{{errors.gender}}</p>
+				{% endif %}
 			</div>
 		</div>
 
@@ -45,11 +51,17 @@
 				<p class="control">
 					<input class="input is-primary" type="number" name="lowest-course" min="1" max="6" placeholder="Curso más bajo">
 				</p>
+				{% if errors['lowest-course'] %}
+					<p class="help is-danger">{{errors['lowest-course']}}</p>
+				{% endif %}
 			</div>
 			<div class="field">
 				<p class="control">
 					<input class="input is-primary" type="number" name="highest-course" min="1" max="6" placeholder="Curso más alto">
 				</p>
+				{% if errors['highest-course'] %}
+					<p class="help is-danger">{{errors['highest-course']}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -71,6 +83,9 @@
 						{% endfor %}
 					</select>
 				</div>
+				{% if errors.enrollment %}
+					<p class="help is-danger">{{errors.enrollment}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -92,6 +107,9 @@
 						{% endfor %}
 					</select>
 				</div>
+				{% if errors.exam %}
+					<p class="help is-danger">{{errors.exam}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -111,6 +129,9 @@
 						</label>
 					{% endfor %}
 				</div>
+				{% if errors.interest %}
+					<p class="help is-danger">{{errors.interest}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -131,6 +152,9 @@
 						</label>
 					{% endfor %}
 				</div>
+				{% if errors.mentoring %}
+					<p class="help is-danger">{{errors.mentoring}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -150,6 +174,9 @@
 						</label>
 					{% endfor %}
 				</div>
+				{% if errors.dificulty %}
+					<p class="help is-danger">{{errors.dificulty}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -169,6 +196,9 @@
 						</label>
 					{% endfor %}
 				</div>
+				{% if errors.expectedgrade %}
+					<p class="help is-danger">{{errors.expectedgrade}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -188,6 +218,9 @@
 						</label>
 					{% endfor %}
 				</div>
+				{% if errors.assistance %}
+					<p class="help is-danger">{{errors.assistance}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>

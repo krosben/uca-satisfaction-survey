@@ -14,6 +14,9 @@
 				</select>
 			</div>
 		</div>
+		{% if errors.degree %}
+			<p class="help is-danger">{{errors.degree}}</p>
+		{% endif %}
 	</div>
 
 
@@ -31,6 +34,9 @@
 				</select>
 			</div>
 		</div>
+		{% if errors.subject %}
+			<p class="help is-danger">{{errors.subject}}</p>
+		{% endif %}
 	</div>
 
 
@@ -49,4 +55,7 @@
 			</div>
 		</div>
 	</div>
+	{% if errors.group %}
+		<p class="help is-danger">{{errors.group}}</p>
+	{% endif %}
 </div>
