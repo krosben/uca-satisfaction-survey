@@ -69,7 +69,6 @@ class Application
         echo $response;
     }
 
-    // TODO: Change field value to option
     public function savePoll(array $data)
     {
         $student = [
@@ -97,17 +96,17 @@ class Application
 
             foreach ($data['answers'] as $proffesor => $answers) {
                 $id_proffesor = $data['proffesors'][$proffesor];
-                foreach ($answers as $id_question => $value) {
+                foreach ($answers as $id_question => $option) {
                     $votes = $this->db->update('answers')
                         ->where('id_question')->is($id_question)
                         ->andWhere('id_proffesor')->is($id_proffesor)
-                        ->andWhere('value')->is($value)
+                        ->andWhere('option')->is($option)
                         ->increment('votes')
                     ;
                     if (0 === $votes) {
                         $this->db->insert([
                             'votes' => 1,
-                            'value' => $value,
+                            'option' => $option,
                             'id_students' => $id_student,
                             'id_question' => $id_question,
                             'id_proffesor' => $id_proffesor,

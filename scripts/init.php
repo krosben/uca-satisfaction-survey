@@ -81,7 +81,7 @@ $db->createTable('proffesors', function (CreateTable $table) {
 
 $db->createTable('answers', function (CreateTable $table) {
     $table->integer('id')->autoincrement()->size('normal')->notNull();
-    $table->integer('value')->size('normal')->notNull();
+    $table->integer('option')->size('normal')->notNull();
     $table->integer('votes')->size('normal')->notNull();
     $table->primary('id');
     $table->integer('id_question')->size('normal');
