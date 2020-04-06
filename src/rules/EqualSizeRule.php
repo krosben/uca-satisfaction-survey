@@ -18,6 +18,6 @@ class EqualSizeRule extends Rule
         $field = $this->parameter('field');
         $anotherValue = $this->getAttribute()->getValue($field);
 
-        return count($anotherValue) === count($value);
+        return gettype($anotherValue) === gettype($value) && count($anotherValue) === count($value);
     }
 }
