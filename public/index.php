@@ -16,6 +16,7 @@ $app->router->post('/', function () use ($app) {
     if ($validation->fails()) {
         $context = $app->getFormData();
         $context['errors'] = $validation->errors()->firstOfAll();
+        $context['valid'] = $validation->getValidData();
 
         return $app->twig->render('index.twig', $context);
     }
