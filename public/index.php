@@ -2,7 +2,39 @@
 
 require_once '../vendor/autoload.php';
 
+use Josantonius\Session\Session;
+
 $app = new \App\Application();
+
+$app->router->filter('auth', function () use ($app) {
+    if (is_null(Session::get('email'))) {
+        $app->redirect('/login');
+
+        return false;
+    }
+});
+
+$app->router->group(['before' => 'auth'], function ($router) use ($app) {
+    $router->get('/logout', function () use ($app) {
+        Session::destroy('email');
+        $app->redirect('/login');
+    });
+});
+
+
+$app->router->filter('logged', function () use ($app) {
+    if (!is_null(Session::get('email'))) {
+        $app->redirect('/dashboard');
+
+        return false;
+    }
+});
+
+$app->router->group(['before' => 'auth'], function ($router) use ($app) {
+    $router->get('/dashboard', function () use ($app) {
+        return $app->twig->render('dashboard.twig');
+    });
+});
 
 $app->router->get('/', function () use ($app) {
     return $app->twig->render('index.twig', $app->getFormData());
@@ -26,8 +58,28 @@ $app->router->post('/', function () use ($app) {
     return $app->twig->render('success.twig');
 });
 
-$app->router->get('admin', function () use ($app) {
-    return $app->twig->render('admin.twig');
+$app->router->group(['before' => 'logged'], function ($router) use ($app) {
+    $app->router->get('login', function () use ($app) {
+        return $app->twig->render('login.twig');
+    });
+});
+
+$app->router->post('login', function () use ($app) {
+    $validation = $app->validator->make($_POST, [
+        'email' => 'required|email',
+        'password' => 'required|login_rule:email',
+    ]);
+    $validation->validate();
+
+    if ($validation->fails()) {
+        $message = 'Email o contraseña incorrectos';
+
+        return $app->twig->render('login.twig', ['errors' => $message]);
+    }
+
+    Session::set('email', $validation->getValidData()['email']);
+
+    $app->redirect('/dashboard');
 });
 
 $app->run();

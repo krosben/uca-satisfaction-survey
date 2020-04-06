@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Rules\EqualSizeRule;
+use App\Rules\LoginRule;
+use Josantonius\Session\Session;
 use Opis\Database\Connection;
 use Opis\Database\Database;
 use Phroute\Phroute\Dispatcher;
@@ -38,6 +40,7 @@ class Application
 
     public function __construct()
     {
+        Session::init();
         $this->connection = new Connection(
             getenv('DB_DSN'),
             getenv('DB_USER'),
@@ -49,6 +52,7 @@ class Application
         $this->twig = new \Twig\Environment($loader);
         $this->validator = new Validator();
         $this->validator->addValidator('equal_size', new EqualSizeRule());
+        $this->validator->addValidator('login_rule', new LoginRule($this->db));
     }
 
     public function run()

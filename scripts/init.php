@@ -7,6 +7,13 @@ use Scripts\DB;
 
 $db = new DB();
 
+$db->createTable('users', function (CreateTable $table) {
+    $table->integer('id')->autoincrement()->size('normal')->notNull();
+    $table->string('email')->notNull()->unique();
+    $table->string('password')->notNull();
+    $table->primary('id');
+});
+
 $db->createTable('gender', function (CreateTable $table) {
     $table->integer('id')->autoincrement()->size('normal')->notNull();
     $table->string('name')->notNull();
@@ -1891,6 +1898,11 @@ $proffesors = [
     'Victor Manuel Sanchez Corbacho',
     'Victor Perez Fernandez',
 ];
+
+$db->insertMany([[
+    'email' => 'admin@admin.com',
+    'password' => password_hash('admin#77', PASSWORD_BCRYPT, ['cost' => 11]),
+]], 'users');
 
 $db->insertMany($questions, 'questions');
 
