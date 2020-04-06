@@ -47,7 +47,9 @@ class Application
         $this->router = new RouteCollector();
         $loader = new \Twig\Loader\FilesystemLoader('../src/views');
         $this->twig = new \Twig\Environment($loader);
-        $this->validator = new Validator();
+        $this->validator = new Validator([
+            'required' => 'El campo es obligatorio',
+        ]);
         $this->validator->addValidator('equal_size', new EqualSizeRule());
     }
 
