@@ -8,7 +8,10 @@
 		</div>
 		<div class="field-body ">
 			<div class="field">
-				<input class="input is-primary" type="number" name="age" min="18" max="99">
+				<input class="input is-primary" type="number" name="age" min="18" max="99" value="{{valid.age}}">
+				{% if errors.age %}
+					<p class="help is-danger">{{errors.age}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -22,14 +25,17 @@
 			<div class="field">
 				<div class="select is-primary is-fullwidth" name="gender">
 					<select name="gender">
-						<option disabled selected value>
+						<option disabled {% if not valid.gender %} selected {% endif %} value>
 							-- Selecciona --
 						</option>
 						{% for gender in genders %}
-							<option value={{gender.id}}>{{gender.name}}</option>
+							<option value={{gender.id}} {% if valid.gender and valid.gender == gender.id%} selected {% endif %}>{{gender.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
+				{% if errors.gender %}
+					<p class="help is-danger">{{errors.gender}}</p>
+				{% endif %}
 			</div>
 		</div>
 
@@ -43,13 +49,19 @@
 		<div class="field-body">
 			<div class="field">
 				<p class="control">
-					<input class="input is-primary" type="number" name="lowest-course" min="1" max="6" placeholder="Curso más bajo">
+					<input class="input is-primary" type="number" name="lowest_course" min="1" max="6" placeholder="Curso más bajo" value="{{valid.lowest_course}}">
 				</p>
+				{% if errors.lowest_course %}
+					<p class="help is-danger">{{errors.lowest_course}}</p>
+				{% endif %}
 			</div>
 			<div class="field">
 				<p class="control">
-					<input class="input is-primary" type="number" name="highest-course" min="1" max="6" placeholder="Curso más alto">
+					<input class="input is-primary" type="number" name="highest_course" min="1" max="6" placeholder="Curso más alto" value="{{valid.highest_course}}">
 				</p>
+				{% if errors.highest_course %}
+					<p class="help is-danger">{{errors.highest_course}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -63,14 +75,17 @@
 			<div class="field">
 				<div class="select is-primary is-fullwidth" name="enrollment">
 					<select name="enrollment">
-						<option disabled selected value>
+						<option disabled {% if not valid.enrollment %} selected {% endif %} value>
 							-- Selecciona --
 						</option>
 						{% for idk in 1..enrollment %}
-							<option value={{idk}}>{{idk}}</option>
+							<option value={{idk}} {% if valid.enrollment and valid.enrollment == idk%} selected {% endif %}>{{idk}}</option>
 						{% endfor %}
 					</select>
 				</div>
+				{% if errors.enrollment %}
+					<p class="help is-danger">{{errors.enrollment}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -84,14 +99,17 @@
 			<div class="field">
 				<div class="select is-primary is-fullwidth" name="exam">
 					<select name="exam">
-						<option disabled selected value>
+						<option disabled {% if not valid.exam %} selected {% endif %} value>
 							-- Selecciona --
 						</option>
 						{% for idk in 1..exam %}
-							<option value={{idk}}>{{idk}}</option>
+							<option value={{idk}} {% if valid.exam and valid.exam == idk%} selected {% endif %}>{{idk}}</option>
 						{% endfor %}
 					</select>
 				</div>
+				{% if errors.exam %}
+					<p class="help is-danger">{{errors.exam}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -106,11 +124,14 @@
 				<div class="control">
 					{% for interes in interest %}
 						<label class="radio">
-							<input type="radio" name="interest" value="{{interes.id}}">
+							<input type="radio" name="interest" value="{{interes.id}}" {% if valid.interest and valid.interest == interes.id%} checked {% endif %}>
 							{{interes.name}}
 						</label>
 					{% endfor %}
 				</div>
+				{% if errors.interest %}
+					<p class="help is-danger">{{errors.interest}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -126,11 +147,14 @@
 				<div class="control">
 					{% for mentor in mentoring %}
 						<label class="radio">
-							<input type="radio" name="mentoring" value="{{mentor.id}}">
+							<input type="radio" name="mentoring" value="{{mentor.id}}" {% if valid.mentoring and valid.mentoring == mentor.id%} checked {% endif %}>
 							{{mentor.name}}
 						</label>
 					{% endfor %}
 				</div>
+				{% if errors.mentoring %}
+					<p class="help is-danger">{{errors.mentoring}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -145,11 +169,14 @@
 				<div class="control">
 					{% for dificult in dificulty %}
 						<label class="radio">
-							<input type="radio" name="dificulty" value="{{dificult.id}}">
+							<input type="radio" name="dificulty" value="{{dificult.id}}" {% if valid.dificulty and valid.dificulty == dificult.id%} checked {% endif %}>
 							{{dificult.name}}
 						</label>
 					{% endfor %}
 				</div>
+				{% if errors.dificulty %}
+					<p class="help is-danger">{{errors.dificulty}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -164,11 +191,14 @@
 				<div class="control">
 					{% for expected in expectedgrade %}
 						<label class="radio">
-							<input type="radio" name="expectedgrade" value="{{expected.id}}">
+							<input type="radio" name="expectedgrade" value="{{expected.id}}" {% if valid.expectedgrade and valid.expectedgrade == expected.id%} checked {% endif %}>
 							{{expected.name}}
 						</label>
 					{% endfor %}
 				</div>
+				{% if errors.expectedgrade %}
+					<p class="help is-danger">{{errors.expectedgrade}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -183,11 +213,14 @@
 				<div class="control">
 					{% for assist in assistance %}
 						<label class="radio">
-							<input type="radio" name="assistance" value="{{assist.id}}">
+							<input type="radio" name="assistance" value="{{assist.id}}" {% if valid.assistance and valid.assistance == assist.id%} checked {% endif %}>
 							{{assist.name}}
 						</label>
 					{% endfor %}
 				</div>
+				{% if errors.assistance %}
+					<p class="help is-danger">{{errors.assistance}}</p>
+				{% endif %}
 			</div>
 		</div>
 	</div>

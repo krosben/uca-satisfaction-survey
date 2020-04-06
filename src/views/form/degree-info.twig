@@ -5,15 +5,18 @@
 		<div class="control">
 			<div class="select is-primary is-fullwidth">
 				<select id="degree-id" name="degree">
-					<option disabled selected value>
+					<option disabled {% if not valid.degree %} selected {% endif %} value>
 						-- Selecciona --
 					</option>
 					{% for degree in degrees %}
-						<option value={{degree.id}}>{{degree.name}}</option>
+						<option value={{degree.id}} {% if valid.degree and valid.degree == degree.id%} selected {% endif %}>{{degree.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
 		</div>
+		{% if errors.degree %}
+			<p class="help is-danger">{{errors.degree}}</p>
+		{% endif %}
 	</div>
 
 
@@ -22,15 +25,18 @@
 		<div class="control">
 			<div class="select is-primary is-fullwidth">
 				<select id="subject-id" name="subject">
-					<option disabled selected value>
+					<option disabled {% if not valid.subject %} selected {% endif %} value>
 						-- Selecciona --
 					</option>
 					{% for subject in subjects %}
-						<option value={{subject.id}} data-id-degree={{subject.id_degree}}>{{subject.name}}</option>
+						<option value={{subject.id}} data-id-degree={{subject.id_degree}} {% if valid.subject and valid.subject == subject.id%} selected {% endif %}>{{subject.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
 		</div>
+		{% if errors.subject %}
+			<p class="help is-danger">{{errors.subject}}</p>
+		{% endif %}
 	</div>
 
 
@@ -39,14 +45,17 @@
 		<div class="control">
 			<div class="select is-primary is-fullwidth">
 				<select id="group-id" name="group">
-					<option disabled selected value>
+					<option disabled {% if not valid.group %} selected {% endif %} value>
 						-- Selecciona --
 					</option>
 					{% for group in groups %}
-						<option value={{group.id}}>{{group.id}}</option>
+						<option value={{group.id}} {% if valid.group and valid.group == group.id%} selected {% endif %}>{{group.id}}</option>
 					{% endfor %}
 				</select>
 			</div>
 		</div>
 	</div>
+	{% if errors.group %}
+		<p class="help is-danger">{{errors.group}}</p>
+	{% endif %}
 </div>

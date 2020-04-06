@@ -23,10 +23,11 @@
     }
   },
   "extensions": [
-    "junstyle.php-cs-fixer",
-    "felixfbecker.php-debug",
-    "felixfbecker.php-intellisense",
-    "mblode.twig-language-2",
-    "zignd.html-css-class-completion"
-  ]
+	"junstyle.php-cs-fixer",
+	"felixfbecker.php-debug",
+	"felixfbecker.php-intellisense",
+	"mblode.twig-language-2",
+	"zignd.html-css-class-completion",
+	"ms-vsliveshare.vsliveshare"
+]
 }

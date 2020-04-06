@@ -7,6 +7,13 @@ use Scripts\DB;
 
 $db = new DB();
 
+$db->createTable('users', function (CreateTable $table) {
+    $table->integer('id')->autoincrement()->size('normal')->notNull();
+    $table->string('email')->notNull()->unique();
+    $table->string('password')->notNull();
+    $table->primary('id');
+});
+
 $db->createTable('gender', function (CreateTable $table) {
     $table->integer('id')->autoincrement()->size('normal')->notNull();
     $table->string('name')->notNull();
@@ -46,7 +53,6 @@ $db->createTable('assistance', function (CreateTable $table) {
 $db->createTable('students', function (CreateTable $table) {
     $table->integer('id')->autoincrement()->size('normal')->notNull();
     $table->integer('age')->size('normal')->notNull();
-    $table->string('age')->notNull();
     $table->integer('highest_course')->size('normal')->notNull();
     $table->integer('lowest_course')->size('normal')->notNull();
     $table->integer('enrollment')->size('normal')->notNull();
@@ -82,7 +88,7 @@ $db->createTable('proffesors', function (CreateTable $table) {
 
 $db->createTable('answers', function (CreateTable $table) {
     $table->integer('id')->autoincrement()->size('normal')->notNull();
-    $table->integer('value')->size('normal')->notNull();
+    $table->integer('option')->size('normal')->notNull();
     $table->integer('votes')->size('normal')->notNull();
     $table->primary('id');
     $table->integer('id_question')->size('normal');
@@ -1892,6 +1898,11 @@ $proffesors = [
     'Victor Manuel Sanchez Corbacho',
     'Victor Perez Fernandez',
 ];
+
+$db->insertMany([[
+    'email' => 'admin@admin.com',
+    'password' => password_hash('admin#77', PASSWORD_BCRYPT, ['cost' => 11]),
+]], 'users');
 
 $db->insertMany($questions, 'questions');
 

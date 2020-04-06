@@ -9,11 +9,11 @@
 					<div class="control">
 						<div class="select is-primary is-fullwidth">
 							<select name="proffesors[{{column}}]">
-								<option disabled selected value>
+								<option disabled {% if attribute(valid.proffesors, column) is not defined or attribute(invalid.answers, column)|length == 0 %} selected {% endif %} value>
 									-- Selecciona --
 								</option>
 								{% for proffesor in proffesors %}
-									<option value={{proffesor.id}}>{{proffesor.name}}</option>
+									<option value={{proffesor.id}} {% if attribute(valid.proffesors, column) == proffesor.id and ( attribute(valid.answers, column)|length > 0 or attribute(invalid.answers, column)|length > 0 )%} selected {% endif %}>{{proffesor.name}}</option>
 								{% endfor %}
 							</select>
 						</div>
@@ -40,8 +40,10 @@
 						<div class="column {% if column in 2..columns %}is-hidden-mobile{% endif %}">
 							<div class="control">
 								{%- for key, answer in answers -%}
+									{% set validanswer = attribute(attribute(valid.answers, column), question.id) %}
+									{% set invalidanswer = attribute(attribute(invalid.answers, column), question.id) %}
 									<label class="radio">
-										<input type="radio" name="answers[{{column}}][{{question.id}}]" value="{{key}}">
+										<input type="radio" name="answers[{{column}}][{{question.id}}]" value="{{key}}" {% if ((validanswer and validanswer == key) or ( invalidanswer and invalidanswer == key )) and attribute(valid.proffesors, column) %} checked {% endif %}>
 										{{answer}}
 									</label>
 								{%- endfor -%}

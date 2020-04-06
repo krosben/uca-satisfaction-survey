@@ -1,6 +1,6 @@
 {% extends "layout/app.twig" %}
 {% block title %}
-	Admin
+	Login
 {% endblock %}
 {% block head %}{% endblock %}
 
@@ -12,29 +12,25 @@
 	<div class="container">
 		<div class="columns is-centered">
 			<div class="column is-5-tablet is-4-desktop is-3-widescreen">
-				<form action="" class="box">
+				<form action="/login" method="POST" class="box">
 					<div class="field">
 						<label for="" class="label">Email</label>
 						<div class="control">
-							<input type="email" placeholder="e.g. bobsmith@gmail.com" class="input is-primary" required>
+							<input name="email" type="email" placeholder="e.g. bobsmith@gmail.com" class="input is-primary" required>
 						</div>
 					</div>
 					<div class="field">
 						<label for="" class="label">Password</label>
 						<div class="control">
-							<input type="password" placeholder="*******" class="input is-primary" required>
+							<input name="password" type="password" placeholder="*******" class="input is-primary" required>
 						</div>
+
 					</div>
+					{% if errors %}
+						<p class="help is-danger">{{ errors }}</p>
+					{% endif %}
 					<div class="field">
-						<label for="" class="checkbox">
-							<input type="checkbox">
-							Remember me
-						</label>
-					</div>
-					<div class="field">
-						<button class="button is-primary is-fullwidth">
-							Login
-						</button>
+						<input type="submit" class="button is-primary is-fullwidth" value="Entrar">
 					</div>
 				</form>
 			</div>
