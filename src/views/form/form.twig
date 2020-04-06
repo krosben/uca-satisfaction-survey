@@ -1,7 +1,8 @@
 <form action="/" method="POST">
 	<div class="columns">
 		<div class="column is-2 is-flex">
-			<div class="box is-flex" style="flex-direction:column;flex:1;/*justify-content:space-around;*/">{% include "form/degree-info.twig" %}</div>
+			<div class="box is-flex" style="flex-direction:column;flex:1;/*justify-content:space-around;*/">
+				{% include "form/degree-info.twig" %}</div>
 		</div>
 		<div class="column is-10">
 			<div class="box">{% include "form/student-info.twig" %}</div>
@@ -19,21 +20,23 @@
 					<a class="button is-light" href="/login">Admin</a>
 				</div>
 				<div class="control">
-					<input type="submit" class="button is-primary" value="Enviar"/>
+					<input type="submit" class="button is-primary" value="Enviar" />
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
 {% if errors.proffesors or errors.answers%}
-	<script src="js/bulma-toast.min.js"></script>
-	<script>
-		bulmaToast.toast({
-message: "{{ errors.proffesors }}" || "{{ errors.answers }}",
-position: "top-center",
-type: "is-danger",
-duration: 3000,
-dismissible: true
-});
-	</script>
+<script src="js/bulma-toast.min.js"></script>
+
+
+<script>
+	bulmaToast.toast({
+		message: "{% if errors.proffesors %} Se debe seleccionar al menos un profesor {% else %} Se deben seleccionar todas las respuestas {% endif %}",
+		position: "top-center",
+		type: "is-danger",
+		duration: 3000,
+		dismissible: true
+	});
+</script>
 {% endif %}
