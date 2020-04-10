@@ -47,14 +47,21 @@ class Application
             getenv('DB_PASS')
         );
         $this->db = new Database($this->connection);
-        $this->router = new RouteCollector();
+    }
+
+    public static function withTwig(): Application
+    {
+        $instance = new self();
+        $instance->router = new RouteCollector();
         $loader = new \Twig\Loader\FilesystemLoader('../src/views');
-        $this->twig = new \Twig\Environment($loader);
-        $this->validator = new Validator([
+        $instance->twig = new \Twig\Environment($loader);
+        $instance->validator = new Validator([
             'required' => 'El campo es obligatorio',
         ]);
-        $this->validator->addValidator('equal_size', new EqualSizeRule());
-        $this->validator->addValidator('login_rule', new LoginRule($this->db));
+        $instance->validator->addValidator('equal_size', new EqualSizeRule());
+        $instance->validator->addValidator('login_rule', new LoginRule($instance->db));
+
+        return $instance;
     }
 
     public function run()
@@ -94,30 +101,17 @@ class Application
         if ($this->db->insert($student)->into('students')) {
             $id_student = $this->db->getConnection()->getPDO()->lastInsertId();
 
-            $this->db->insert([
-                'id_student' => $id_student,
-                'id_group' => $data['group'],
-                'id_subject' => $data['subject'],
-            ])->into('polls');
-
             foreach ($data['answers'] as $proffesor => $answers) {
                 $id_proffesor = $data['proffesors'][$proffesor];
                 foreach ($answers as $id_question => $option) {
-                    $votes = $this->db->update('answers')
-                        ->where('id_question')->is($id_question)
-                        ->andWhere('id_proffesor')->is($id_proffesor)
-                        ->andWhere('option')->is($option)
-                        ->increment('votes')
-                    ;
-                    if (0 === $votes) {
-                        $this->db->insert([
-                            'votes' => 1,
-                            'option' => $option,
-                            'id_students' => $id_student,
-                            'id_question' => $id_question,
-                            'id_proffesor' => $id_proffesor,
-                        ])->into('answers');
-                    }
+                    $this->db->insert([
+                        'option' => $option,
+                        'id_student' => $id_student,
+                        'id_group' => $data['group'],
+                        'id_subject' => $data['subject'],
+                        'id_question' => $id_question,
+                        'id_proffesor' => $id_proffesor,
+                    ])->into('polls');
                 }
             }
         }
@@ -138,7 +132,9 @@ class Application
             'dificulty' => $this->db->from('dificulty')->select()->all(),
             'assistance' => $this->db->from('assistance')->select()->all(),
             'questions' => array_group_by($this->db->from('questions')->select()->all(), 'type', 'subtype'),
-            'proffesors' => $this->db->from('proffesors')->select()->all(),
+            'proffesors' => $this->db->from('proffesors')->join('prof_subject', function ($join) {
+                $join->on('proffesors.id', 'prof_subject.id_proffesor');
+            })->select()->all(),
             'answers' => ['NS', '1', '2', '3', '4', '5'],
             'columns' => 3,
         ];
@@ -171,5 +167,12 @@ class Application
     public function redirect(string $to)
     {
         header('Location: '.$to);
+    }
+
+    public function sendJSON($value)
+    {
+        header('Content-Type: application/json');
+
+        return json_encode($value);
     }
 }

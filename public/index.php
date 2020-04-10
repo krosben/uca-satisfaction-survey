@@ -4,7 +4,7 @@ require_once '../vendor/autoload.php';
 
 use Josantonius\Session\Session;
 
-$app = new \App\Application();
+$app = \App\Application::withTwig();
 
 $app->router->filter('auth', function () use ($app) {
     if (is_null(Session::get('email'))) {
@@ -21,7 +21,6 @@ $app->router->group(['before' => 'auth'], function ($router) use ($app) {
     });
 });
 
-
 $app->router->filter('logged', function () use ($app) {
     if (!is_null(Session::get('email'))) {
         $app->redirect('/dashboard');
@@ -34,6 +33,12 @@ $app->router->group(['before' => 'auth'], function ($router) use ($app) {
     $router->get('/dashboard', function () use ($app) {
         return $app->twig->render('dashboard.twig');
     });
+});
+
+$app->router->get('/statistics', function () use ($app) {
+    $statistics = new \App\Statistics($app->db);
+
+    return $app->sendJSON($statistics->resultsByDegrees());
 });
 
 $app->router->get('/', function () use ($app) {
@@ -50,6 +55,10 @@ $app->router->post('/', function () use ($app) {
         $context['errors'] = $validation->errors()->firstOfAll();
         $context['valid'] = $validation->getValidData();
         $context['invalid'] = $validation->getInvalidData();
+
+        echo '<pre>';
+        print_r($context['errors']);
+        echo '</pre>';
 
         return $app->twig->render('index.twig', $context);
     }

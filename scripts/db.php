@@ -2,7 +2,6 @@
 
 namespace Scripts;
 
-use Opis\Database\Connection;
 use Opis\Database\Database;
 
 class DB
@@ -11,19 +10,10 @@ class DB
      * @var Database
      */
     public $db;
-    /**
-     * @var Connection
-     */
-    private Connection $connection;
 
-    public function __construct()
+    public function __construct($db)
     {
-        $this->connection = new Connection(
-            getenv('DB_DSN'),
-            getenv('DB_USER'),
-            getenv('DB_PASS')
-        );
-        $this->db = new Database($this->connection);
+        $this->db = $db;
     }
 
     public function insertMany(array $rows, string $table, string $column = null)

@@ -2,7 +2,9 @@
 {% block title %}
 	Login
 {% endblock %}
-{% block head %}{% endblock %}
+{% block head %}
+	{{parent()}}
+{% endblock %}
 
 {% block headertitle %}
 	Apartado del administrador

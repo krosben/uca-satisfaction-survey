@@ -13,7 +13,7 @@
 									-- Selecciona --
 								</option>
 								{% for proffesor in proffesors %}
-									<option value={{proffesor.id}} {% if attribute(valid.proffesors, column) == proffesor.id and ( attribute(valid.answers, column)|length > 0 or attribute(invalid.answers, column)|length > 0 )%} selected {% endif %}>{{proffesor.name}}</option>
+									<option value="{{proffesor.id}}" data-id-subject="{{proffesor.id_subject}}" {% if attribute(valid.proffesors, column) == proffesor.id and ( attribute(valid.answers, column)|length > 0 or attribute(invalid.answers, column)|length > 0 )%} selected {% endif %}>{{proffesor.name}}</option>
 								{% endfor %}
 							</select>
 						</div>

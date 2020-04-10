@@ -2,7 +2,9 @@
 {% block title %}
 	Registrada
 {% endblock %}
-{% block head %}{% endblock %}
+{% block head %}
+	{{parent()}}
+{% endblock %}
 
 {% block headertitle %}
 	Encuesta registrada con éxito

@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use Opis\Database\Database;
 use Rakit\Validation\Rule;
 
 class LoginRule extends Rule
@@ -37,7 +38,7 @@ class LoginRule extends Rule
             ->is($email)
             ->column('password')
         ;
-        
+
         return password_verify($password, $hash);
     }
 }

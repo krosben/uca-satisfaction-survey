@@ -9,7 +9,7 @@
 						-- Selecciona --
 					</option>
 					{% for degree in degrees %}
-						<option value={{degree.id}} {% if valid.degree and valid.degree == degree.id%} selected {% endif %}>{{degree.name}}</option>
+						<option value="{{degree.id}}" {% if valid.degree and valid.degree == degree.id%} selected {% endif %}>{{degree.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -29,7 +29,7 @@
 						-- Selecciona --
 					</option>
 					{% for subject in subjects %}
-						<option value={{subject.id}} data-id-degree={{subject.id_degree}} {% if valid.subject and valid.subject == subject.id%} selected {% endif %}>{{subject.name}}</option>
+						<option value="{{subject.id}}" data-id-degree="{{subject.id_degree}}" {% if valid.subject and valid.subject == subject.id%} selected {% endif %}>{{subject.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -49,7 +49,7 @@
 						-- Selecciona --
 					</option>
 					{% for group in groups %}
-						<option value={{group.id}} {% if valid.group and valid.group == group.id%} selected {% endif %}>{{group.id}}</option>
+						<option value="{{group.id}}" {% if valid.group and valid.group == group.id%} selected {% endif %}>{{group.id}}</option>
 					{% endfor %}
 				</select>
 			</div>
