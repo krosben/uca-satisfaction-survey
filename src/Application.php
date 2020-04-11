@@ -176,4 +176,11 @@ class Application
 
         return json_encode($value);
     }
+
+    public function getJSON()
+    {
+        $json = file_get_contents('php://input');
+
+        return json_decode($json);
+    }
 }

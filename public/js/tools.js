@@ -21,6 +21,7 @@ function filterSubjects(e) {
   }
 }
 
+
 function filterProffesor(e) {
   e.preventDefault();
 

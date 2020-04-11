@@ -14,10 +14,44 @@
 	<div class="container">
 		<div class="columns">
 			<div class="column is-2 is-flex">
-				<div class="box is-flex" style="flex-direction:column;flex:1;/*justify-content:space-around;*/"></div>
+				<div class="box is-flex" style="flex-direction:column;flex:1;/*justify-content:space-around;*/">
+					<h3 class="subtitle">Filtros</h3>
+					<div class="field">
+						<label class="label">Titulación</label>
+						<div class="control">
+							<div class="select is-primary is-fullwidth">
+								<select id="degree-id" name="degree">
+									<option disabled selected value>
+										-- Selecciona --
+									</option>
+									{% for degree in degrees %}
+										<option value="{{degree.id}}">{{degree.name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="field">
+						<label class="label">Asignatura</label>
+						<div class="control">
+							<div class="select is-primary is-fullwidth">
+								<select id="subject-id" name="subject">
+									<option disabled selected value>
+										-- Selecciona --
+									</option>
+									{% for subject in subjects %}
+										<option value="{{subject.id}}" data-id-degree="{{subject.id_degree}}">{{subject.name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+					</div>
+
+				</div>
 			</div>
 			<div class="column is-10 is-flex">
-				<canvas id="globalMeans" responsive="true"></canvas>
+				<canvas id="visualization" responsive="true"></canvas>
 			</div>
 		</div>
 		<div class="columns">
