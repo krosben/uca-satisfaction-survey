@@ -27,16 +27,16 @@ const mean = async () => {
 const makeBarChart = async () => {
   const ctx = document.getElementById("globalMeans");
   const allMeans = await mean();
+  const keys = Object.keys(allMeans);
+  const values = Object.values(allMeans);
 
-  // MEDIA:
-  // Object.values(allMeans).reduce((prev, current) => prev + current, 0) / allMeans.length
   const mixedChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: Object.keys(allMeans),
+      labels: keys,
       datasets: [{
         label: 'Media de cada grado',
-        data: Object.values(allMeans),
+        data: values,
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -62,7 +62,7 @@ const makeBarChart = async () => {
           type: 'line',
           mode: 'horizontal',
           scaleID: 'y-axis-0',
-          value: Object.values(allMeans).reduce((prev, current) => prev + current, 0) / allMeans.length,
+          value: values.reduce((prev, current) => prev + current, 0) / values.length,
           borderColor: 'rgb(75, 192, 192)',
           borderWidth: 2,
           label: {

@@ -18,8 +18,7 @@
     "opis/database": "^4.1",
     "jakezatecky/array_group_by": "^2.0",
     "phroute/phroute": "^2.1",
-    "rakit/validation": "^1.2",
-    "josantonius/session": "^1.1"
+    "rakit/validation": "^1.2"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.16"
