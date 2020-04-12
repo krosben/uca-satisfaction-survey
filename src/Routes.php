@@ -66,10 +66,19 @@ class Routes
             $router->get('/dashboard', function () {
                 $degrees = $this->app->db->from('degrees')->select()->all();
                 $subjects = $this->app->db->from('subjects')->select()->all();
+                $profs = $this->app->db->from('proffesors')->join('prof_subject', function ($join) {
+                    $join->on('proffesors.id', 'prof_subject.id_proffesor');
+                })->select()->all();
+                $gender = $this->app->db->from('gender')->select()->all();
 
                 return $this->app->twig->render(
                     'dashboard.twig',
-                    ['degrees' => $degrees, 'subjects' => $subjects]
+                    [
+                        'degrees' => $degrees,
+                        'subjects' => $subjects,
+                        'proffesors' => $profs,
+                        'genders' => $gender,
+                    ]
                 );
             });
         });
@@ -92,16 +101,6 @@ class Routes
 
                 return $statistics->asJSON();
             });
-        });
-    }
-
-    public function getStatistics()
-    {
-        $this->app->router->get('/test/{degree}?', function ($degree = null) {
-            $statistics = new \App\Statistics($this->app);
-            $statistics->setParams(['degree' => $degree]);
-
-            return $statistics->asJSON();
         });
     }
 
