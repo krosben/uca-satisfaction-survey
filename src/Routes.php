@@ -88,9 +88,9 @@ class Routes
     {
         $this->app->router->group(['before' => 'auth'], function ($router) {
             $router->post('/statistics', function () {
-                $statistics = new \App\Statistics($this->app->db);
+                $statistics = new \App\Statistics($this->app);
 
-                return $this->app->sendJSON($statistics->resultsByDegrees($this->app->getJSON()));
+                return $statistics->asJSON();
             });
         });
     }
@@ -98,9 +98,10 @@ class Routes
     public function getStatistics()
     {
         $this->app->router->get('/test/{degree}?', function ($degree = null) {
-            $statistics = new \App\Statistics($this->app->db);
+            $statistics = new \App\Statistics($this->app);
+            $statistics->setParams(['degree' => $degree]);
 
-            return $this->app->sendJSON($statistics->resultsByDegrees($degree));
+            return $statistics->asJSON();
         });
     }
 

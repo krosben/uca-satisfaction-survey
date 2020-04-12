@@ -1,3 +1,5 @@
+import { disableFieldsById, hideOptionsFromSelectByData } from './tools.js';
+
 const getData = async (params = { degree: null }) => {
   const response = await fetch('/statistics', {
     method: 'post',
@@ -9,41 +11,12 @@ const getData = async (params = { degree: null }) => {
   return response.json();
 }
 
-const getMeansFromOptions = (data) =>
-  Object.entries(data).reduce((means, [key, votes]) => {
-    const totalVotes = votes.reduce((sum, current) => sum + current, 0);
-    return {
-      [key]: (votes.reduce((accum, current, index) => ((index + 1) * current + accum), 0) / totalVotes).toFixed(2) - 1, ...means
-    };
-  }, {});
-
-const groupOptionsBy = (key, data) => data.reduce((prev, current) => {
-  if (prev[current[key]]) {
-    prev[current[key]][current.option] += current.votes;
-  } else {
-    prev[current[key]] = new Array(6).fill(0);
-    prev[current[key]][current.option] = current.votes;
-  }
-  return prev;
-}, {});
-
-
-const mean = async () => {
-  try {
-    const data = await getData();
-    const result = groupOptionsBy('degree', data);
-    return getMeansFromOptions(result);
-  } catch (e) {
-    return {}
-  }
-}
+const mean = async () => getData();
 
 const meanOfDegree = async () => {
   const degree = document.getElementById("degree-id").value;
   if (degree) {
-    const data = await getData({ degree });
-    const result = groupOptionsBy('question', data);
-    return getMeansFromOptions(result);
+    return getData({ degree });
   }
 }
 
@@ -122,8 +95,20 @@ window.addEventListener('load', async () => {
   })
 })
 
+
+
 document.getElementById("degree-id").addEventListener("change",
   async () => {
-    await updateChart(meanOfDegree, "Media Grado")()
+    disableFieldsById([document.querySelector("#subject-id")], 'degree-id');
+    await updateChart(meanOfDegree, "Media Grado")();
   }
 );
+
+document.getElementById("degree-id").addEventListener(
+  "change",
+  hideOptionsFromSelectByData('#subject-id', 'degree-id', 'idDegree', [document.querySelector('#subject-id')])
+);
+
+document.getElementById("degree-id").addEventListener("change", () => {
+  document.getElementById("subject-id").selectedIndex = 0;
+});
