@@ -64,7 +64,22 @@ class Routes
     {
         $this->app->router->group(['before' => 'auth'], function ($router) {
             $router->get('/dashboard', function () {
-                return $this->app->twig->render('dashboard.twig');
+                $degrees = $this->app->db->from('degrees')->select()->all();
+                $subjects = $this->app->db->from('subjects')->select()->all();
+                $profs = $this->app->db->from('proffesors')->join('prof_subject', function ($join) {
+                    $join->on('proffesors.id', 'prof_subject.id_proffesor');
+                })->select()->all();
+                $gender = $this->app->db->from('gender')->select()->all();
+
+                return $this->app->twig->render(
+                    'dashboard.twig',
+                    [
+                        'degrees' => $degrees,
+                        'subjects' => $subjects,
+                        'proffesors' => $profs,
+                        'genders' => $gender,
+                    ]
+                );
             });
         });
     }
@@ -78,12 +93,14 @@ class Routes
         });
     }
 
-    public function getStatistics()
+    public function postStatistics()
     {
-        $this->app->router->get('/statistics', function () {
-            $statistics = new \App\Statistics($this->app->db);
+        $this->app->router->group(['before' => 'auth'], function ($router) {
+            $router->post('/statistics', function () {
+                $statistics = new \App\Statistics($this->app);
 
-            return $this->app->sendJSON($statistics->resultsByDegrees());
+                return $statistics->asJSON();
+            });
         });
     }
 

@@ -1,37 +1,119 @@
 {% extends "layout/app.twig" %}
 {% block title %}
-	Estadísticas
+Estadísticas
 {% endblock %}
 {% block head %}
-	{{parent()}}
+{{parent()}}
 {% endblock %}
 
 {% block headertitle %}
-	Estadísticas
+Estadísticas
 {% endblock %}
 
 {% block content %}
-	<div class="container">
-		<div class="columns">
-			<div class="column is-2 is-flex">
-				<div class="box is-flex" style="flex-direction:column;flex:1;/*justify-content:space-around;*/"></div>
-			</div>
-			<div class="column is-10 is-flex">
-				<canvas id="globalMeans" responsive="true"></canvas>
-			</div>
-		</div>
-		<div class="columns">
-			<div class="column">
-				<div class="box is-flex" style="flex-direction:row;justify-content: space-between;flex:1;">
-					<div class="control">
-						<a class="button is-light" href="/logout">Logout</a>
+<div class="columns">
+	<div class="column is-2 is-flex">
+		<div class="box is-flex" style="flex-direction:column;flex:1;">
+			<h3 class="subtitle">Filtros</h3>
+			<div class="field">
+				<label class="label">Titulación</label>
+				<div class="control">
+					<div class="select is-primary is-fullwidth">
+						<select id="degree-id" name="degree">
+							<option disabled selected value>
+								-- Selecciona --
+							</option>
+							{% for degree in degrees %}
+							<option value="{{degree.id}}">{{degree.name}}</option>
+							{% endfor %}
+						</select>
 					</div>
 				</div>
 			</div>
+
+			<div class="field">
+				<label class="label">Asignatura</label>
+				<div class="control">
+					<div class="select is-primary is-fullwidth">
+						<select id="subject-id" name="subject">
+							<option disabled selected value>
+								-- Selecciona --
+							</option>
+							{% for subject in subjects %}
+							<option value="{{subject.id}}" data-id-degree="{{subject.id_degree}}">{{subject.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Profesor
+					{{ column-}}</label>
+				<div class="control">
+					<div class="select is-primary is-fullwidth">
+						<select name="proffesors[{{column}}]" id="proffesor-id">
+							<option disabled selected value>
+								-- Selecciona --
+							</option>
+							{% for proffesor in proffesors %}
+							<option value="{{proffesor.id}}" data-id-subject="{{proffesor.id_subject}}">{{proffesor.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="label">Edad (años)</label>
+				<div class="field-body ">
+					<div class="field">
+						<input id="age-id" class="input is-primary" type="number" name="age" min="18" max="99" value>
+					</div>
+				</div>
+			</div>
+
+			<div class="field ">
+				<label class="label">
+					Género
+				</label>
+				<div class="control">
+					<div class="select is-primary is-fullwidth">
+						<select name="gender" id="gender-id">
+							<option disabled selected value>
+								-- Selecciona --
+							</option>
+							{% for gender in genders %}
+							<option value={{gender.id}}>{{gender.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<button class="button is-white" style="color: red;" id="clean-filters">
+				Limpiar filtros
+			</button>
+
 		</div>
 	</div>
-	<script src="js/Chart.bundle.min.js"></script>
-	<script src="js/chartjs-plugin-annotation.min.js"></script>
-	<script src="js/statistics.js"></script>
+	<div class="column is-10">
+		<div class="box is-flex">
+			<canvas id="visualization" responsive="true"></canvas>
+		</div>
+	</div>
+</div>
+<div class="columns">
+	<div class="column">
+		<div class="box is-flex" style="flex-direction:row;justify-content: space-between;flex:1;">
+			<div class="control">
+				<a class="button is-light" href="/logout">Logout</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="js/Chart.bundle.min.js"></script>
+<script src="js/chartjs-plugin-annotation.min.js"></script>
+<script type="module" src="js/statistics.js"></script>
 
 {% endblock %}

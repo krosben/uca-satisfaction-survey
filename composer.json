@@ -28,6 +28,11 @@
       "App\\": "src/",
       "Scripts\\": "scripts/",
       "App\\Rules\\": "src/rules/"
-    }
+    },
+    "files": [
+      "src/utils/array_entries.php",
+      "src/utils/array_reduce_with_index.php",
+      "src/utils/properties_exists.php"
+    ]
   }
 }
