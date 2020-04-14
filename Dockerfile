@@ -9,7 +9,7 @@ RUN composer install \
   --prefer-dist \
   --no-scripts \
   --no-plugins \
-  --no-dev 
+  --no-dev
 
 FROM php:7.4-apache as release
 
