@@ -7,8 +7,26 @@ window.addEventListener("load", () => {
   ], 'degree-id')
 
 
-  disableFieldsById(document.querySelectorAll('[name^="proffesors["]'), 'subject-id')
+  disableFieldsById(document.querySelectorAll('[name^="proffesors["]'), 'subject-id');
+
+  if (document.getElementById("degree-id").selectedIndex !== 0) {
+    const event = {
+      target: { value: document.getElementById("degree-id").value },
+      preventDefault: () => { }
+    }
+    hideOptionsFromSelectByData('#subject-id', 'degree-id', 'idDegree', ['#subject-id', '#group-id'].map(field => document.querySelector(field)))(event);
+    if (document.getElementById("subject-id").selectedIndex !== 0) {
+      const event = {
+        target: { value: document.getElementById("subject-id").value },
+        preventDefault: () => { }
+      }
+      hideOptionsFromSelectByData('[name^="proffesors["]', 'subject-id', 'idSubject', document.querySelectorAll('[name^="proffesors["]'))(event);
+    }
+  }
+
 })
+
+
 
 document.getElementById("degree-id").addEventListener("change", () => {
   document.getElementById("subject-id").selectedIndex = 0;
