@@ -6,6 +6,13 @@ Poll for student's opinion about proffesor's performance
 
 ## E-R
 ![Scheme](./assets/img/poll.png)
+
+## Usage
+
+```sh
+docker-compose up -d
+```
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
